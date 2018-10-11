@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use view;
+use View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,9 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view::share('APP_NAME',         config('_app.APP_NAME'));
-        view::share('Browser_Title',    config('_app.APP_NAME'));
-        view::share('Page_Description', config('_app.APP_DESCRIPTION'));
+        View::share('APP_NAME',         config('_app.APP_NAME'));
+        View::share('Browser_Title',    config('_app.APP_NAME'));
+        View::share('Page_Description', config('_app.APP_DESCRIPTION'));
     }
 
     /**
