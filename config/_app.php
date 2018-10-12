@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 <?php
 return [
     'APP_NAME' => 'Empresa-ERP',
