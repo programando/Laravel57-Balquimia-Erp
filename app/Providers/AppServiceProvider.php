@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use View;
-use config;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
