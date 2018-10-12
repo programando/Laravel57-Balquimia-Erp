@@ -20,7 +20,7 @@
                 <div class="card text-white bg-info text-center" style="width:  400px;">
                   <div class="card-content">
                     <div class="card-body">
-                      {{ config('app.url') }}
+                      {{ config('_app.APP_NAME') }}
                       <h4 class="card-title"> <h1 class="text-white"><strong>{{ $APP_NAME }}</strong></h1> <br> <br><br></h4>
                         <blockquote >
                           <div class="row">
@@ -33,7 +33,7 @@
                             <div class="col-xs-4"></div>
                           </div>
                         </blockquote>
-                      }
+
                     </div>
                   </div>
                 </div>
