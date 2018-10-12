@@ -1,5 +1,12 @@
 <?php
 
+
+
+
+
+
+
+
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -13,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('APP_NAME',         config('_app.APP_NAME'));
-        View::share('Browser_Title',    config('_app.APP_NAME'));
-        View::share('Page_Description', config('_app.APP_DESCRIPTION'));
+        view::share('APP_NAME',         'BALQUIMIA');
+        view::share('Browser_Title',    config('_app.APP_NAME'));
+        view::share('Page_Description', config('_app.APP_DESCRIPTION'));
     }
 
     /**
