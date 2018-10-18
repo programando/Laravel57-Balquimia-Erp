@@ -25,7 +25,6 @@ class LoginRequest extends FormRequest
      */
     public function rules() {
         $currentRouteName = Route::currentRouteName();
-
         if ( $currentRouteName == 'login')              {  return $this->Loginvalidate();       }
         if ( $currentRouteName == 'reset-password')     {  return $this->PasswordRemember();    }
         if ( $currentRouteName == 'update-password')    {  return $this->ResetPassword();       }
@@ -42,7 +41,6 @@ class LoginRequest extends FormRequest
 
 
     private function PasswordRemember(){
-
           return [
                 'email'       => ['required', 'email','exists:terceros_users'],
         ];

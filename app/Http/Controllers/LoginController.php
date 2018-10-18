@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 
-//use App\Events\SendMailResetPassword;
+use App\Events\LoginSendMailResetPassword;
 /** MODELS **/
 use \App\Models\Frase;
 use \App\Models\TercerosUser        as Terceros;
@@ -46,7 +46,7 @@ class LoginController extends Controller
                   $remember ) ) {
                 //return Redirect::intended();
            return Redirect('/');
-           }
+              }
            //En caso de que no pueda loguearse
            return Redirect('/login')
                 ->withInput( $FormData->only('email','remember_me'))
@@ -63,7 +63,7 @@ class LoginController extends Controller
 
 
     public function PasswordRememberShowForm () {
-        return view('login.password-remember');
+        return view('login.passwors-reset-show-form');
       }
 
 
@@ -81,16 +81,11 @@ class LoginController extends Controller
          $token                 = str_random(100);
 
          //Iniciar Evento envio correo
-        // SendMailResetPassword::dispatch( $email, $token );
-
-         //event (new SendMailResetPassword ( $email, $token ) );
-
+         LoginSendMailResetPassword::dispatch( $email, $token );
           //Graba el Token en la base de datos
           $this->TokenSave(   $email , $token);
-
           //muestra mensaje confirmación de envío de correo
-           return view('login.password-remember-msg-ok')->with('email',$email);
-
+           return view('login.passwors-reset-show-msg-ok')->with('email',$email);
         }
 
 
@@ -109,7 +104,7 @@ class LoginController extends Controller
                 $User->delete();
                 return Redirect('reset-password')->with('error',trans('_app.token_expirado'));
               }
-             return view('login.password-reset', compact('token','email'));
+             return view('login.password-update', compact('token','email'));
       }
 
 

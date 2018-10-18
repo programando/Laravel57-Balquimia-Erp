@@ -36,6 +36,7 @@ return [
          'btn_ingresar_sys'   => 'Ingresar al sistema',
          'btn_nuevo_registro' => 'Crear nuevo registro',
          'btn_reset_password' => 'Actualizar contraseña',
+         'btn_go_to_home'     => 'Volver a Inicio',
 
 
 
@@ -90,8 +91,9 @@ return [
          | FORMULARIO RESET PASSWORD MENSAJE ENVIADO ( passwords\recordar-msg-ok)
          |--------------------------------------------------------------------------
          */
-         'pass_remember_text_ok'      => 'Hemos enviado un mensaje junto con un código de validación a la dirección de correo: <strong> :email </strong>  registrada en nuestro sistema. Por favor revíselo y siga las instrucciones para reestablecer su contraseña. <i><small><strong>Tenga en cuenta que el código expirará en 15 minutos </strong></small></i> <br><br> No olvide revisar su bandeja de correo no deseado y de recibirlo allí, asegúrese de incluir nuestra dirección como sitio de confianza para que siga recibiendo nuestras notificaciones.',
          'pass_remember_title_msg_ok' => 'Confirmación envío de correo',
+         'pass_remember_text_ok'      => 'Hemos enviado un mensaje junto con un código de validación a la dirección de correo: <strong> :email </strong>  registrada en nuestro sistema.  Por favor revíselo y siga las instrucciones para reestablecer su contraseña. <i><small><br><strong>Tenga en cuenta que el código expirará en 15 minutos </strong></small></i> <br><br> No olvide revisar su bandeja de correo no deseado y de recibirlo allí, asegúrese de incluir nuestra dirección como sitio de confianza para que siga recibiendo nuestras notificaciones.',
+
 
          /*
          |--------------------------------------------------------------------------

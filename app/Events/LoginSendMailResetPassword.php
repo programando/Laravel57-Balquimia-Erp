@@ -10,10 +10,15 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class SendMailResetPassword
+class LoginSendMailResetPassword
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
     public $email;
     public $token;
 
