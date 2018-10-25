@@ -62,17 +62,20 @@
                           {!! $errors->first('password', '<div class="invalid-data"> <i class="ft-x-square"></i>&nbsp;:message</div>')  !!}
                         </fieldset>
                         <div class="form-group row">
-                          <div class="col-md-6 col-12 text-center text-md-left">
+
+                          <div class="col-md-5 col-12 text-center text-md-left">
                             <fieldset>
                               <input type="checkbox" id="remember_me" name="remember_me" class="chk-remember">
                               <label for="remember-me"> No cerrar sesión</label>
                             </fieldset>
                           </div>
-                          <div class="col-md-6 col-12 text-center text-md-right">
+
+                          <div class="col-md-7 col-12 text-center text-md-right">
                            <small> <a href="{{ route( 'password.reset.show.form' )}}"
                             class="card-link">No tengo contraseña / olvidé la que tenía. Quiero asignar una para ingreso al sistema.
                            </a></small>
                          </div>
+
                         </div>
                         <button type="submit" class="btn btn-info btn-lg"><i class="ft-unlock"></i> Ingresar al sistema</button>
                       </form>
@@ -88,7 +91,14 @@
   </div>
 
 
-  @include('adminModern1.files.js')
+@include('adminModern1.files.js')
+
+<script type="text/javascript">
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+    });
+</script>
+
 </body>
 
 </html>

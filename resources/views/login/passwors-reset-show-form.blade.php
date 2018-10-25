@@ -15,6 +15,7 @@
         <div class="card text-white bg-info text-center">
           <div class="card-content ">
             <h4 class="card-title "> <h1 class="text-white"> <strong>{{ $APP_NAME }}</strong></h1> </h4>
+            @include('alerts.errors')
             <img src="{{ FolderImages(). "/login/hand-finger-with-a-ribbon.svg" }}"" alt="element 04" width="100"   class="float-left mt-3">
             <div class="card-body pt-3">
               <p class="card-text">

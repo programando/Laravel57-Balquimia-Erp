@@ -1,0 +1,50 @@
+.btn-xs, .btn-group-xs > .btn {
+    padding: 0.4rem ;
+    height: 30px;
+    width: 30px;
+    border-radius: 0.21rem;
+}
+
+tr {
+    vertical-align: middle !important;
+    height: 30px !important;
+}
+.card {
+    margin-bottom: 1.5rem !important;
+}
+.card-body {
+    padding: 0.5rem 1rem !important;
+}
+.card-footer {
+    padding: 0.2rem !important;
+}
+.card-header {
+    padding: 1rem !important;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.1rem;
+}
+
+.form-control {
+    padding: 0.15rem 0.75rem;
+    font-size: 11px !important;
+}
+
+th {
+  text-align: center;
+}
+ td {
+    padding: 0.2rem 0.4rem !important;
+    vertical-align: middle !important;
+    font-size: 13px;
+}
+
+blockquote .frase{
+  font-size: 12.5px !important;
+  font-style: italic ;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+

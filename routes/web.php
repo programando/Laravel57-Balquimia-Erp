@@ -1,7 +1,5 @@
 <?php
 
-
-
 Route::get('/demo-user', function () {
     return Users::Name(1);
 });
@@ -35,8 +33,6 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    Route::get('/terceros/notas/ventas'               ,'TercerosController@NotasVenta'        );
    Route::get('/terceros/notas/cartera'              ,'TercerosController@NotasCartera'      );
    Route::get('/terceros/contactos'                  ,'TercerosController@Contactos'         );
-
-
    Route::post('/pedido/grabar'                      ,'PedidosController@Grabar'            );
    Route::get('/pedido/dias/financiacion'                      ,'PedidosController@DiasFinanciacion'            );
 

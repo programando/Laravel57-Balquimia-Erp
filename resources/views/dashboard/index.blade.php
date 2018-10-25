@@ -10,27 +10,25 @@
 
 <body class ="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   <!-- fixed-top-->
-  @include('adminModern1/navbar-top/main-nav-bar')
-  @include('adminModern1/navbar-left/main-nav-left')
+  <div id="VueApp">
+      @include('adminModern1/navbar-top/main-nav-bar')
+      @include('adminModern1/navbar-left/main-nav-left')
+      <div class  ="app-content content" >
+        <div class  ="content-wrapper">
+          <div class  ="content-header row">
+          </div>
+          <div class  ="content-body">
 
-  <div class  ="app-content content">
-    <div class  ="content-wrapper">
-      <div class  ="content-header row">
+            <router-view :key="$route.fullPath" >
+              @yield('content')
+            </router-view>
+
+          </div>
+        </div>
       </div>
-      <div class  ="content-body">
-        CONTENIDO
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
+   {{-- @include('adminModern1/footer/footer') --}}
     </div>
-  </div>
-
-  @include('adminModern1/footer/footer')
-  @include('adminModern1.files.js')
+    @include('adminModern1.files.js')
 </body>
 
 </html>

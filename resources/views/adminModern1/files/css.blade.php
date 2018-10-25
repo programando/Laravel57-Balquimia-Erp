@@ -15,8 +15,12 @@
 <link href="{{asset('css/palette-gradient.css')}}" rel="stylesheet">
 <link href="{{asset('css/palette-gradient.css')}}" rel="stylesheet">
 <link href="{{asset('css/form-validation.css')}}" rel="stylesheet">
+<link href="{{asset('css/custom')}}" rel="stylesheet">
+<link href="{{asset('css/icheck.css')}}" rel="stylesheet">
 <!-- END Page Level CSS-->
 
 <!-- BEGIN Custom CSS-->
 <link href="{{asset('css/app-styles.css')}}" rel="stylesheet">
+<link href="{{mix('css/Vue-App.css')}}" rel="stylesheet">
+
 <!-- END Custom CSS-->

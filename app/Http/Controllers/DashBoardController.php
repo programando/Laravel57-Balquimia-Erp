@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Menu as Menu;
-
-
 use Cache;
 use DB;
 use Auth;

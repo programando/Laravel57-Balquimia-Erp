@@ -15,13 +15,15 @@
 <script src="{{asset('js/core/app-menu.js')}}"></script>
 <script src="{{asset('js/core/app.js')}}"></script>
 <script src="{{asset('js/customizer.js')}}"></script>
+<script src="{{asset('js/icheck.min.js')}}"></script>
 <!-- END MODERN JS-->
 
 
 <!-- <script src="{{asset('js/dashboard-sales.js')}}"></script>-->
 
 
-<script src="{{asset('js/Vue-App.js')}}"></script>
+<script src="{{ mix('js/Vue-App.js') }}"></script>
 <script src="{{asset('js/app-custom.js')}}"></script>
+
 
 
