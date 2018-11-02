@@ -25,5 +25,19 @@
 <script src="{{ mix('js/Vue-App.js') }}"></script>
 <script src="{{asset('js/app-custom.js')}}"></script>
 
+<script>
+    //$('input').iCheck({
+      //checkboxClass: 'icheckbox_square-blue' ,
+    //});
+
+    $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'icheckbox_square-blue'
+    }).on('ifChecked ifUnchecked', function(){
+        $(this)[0].dispatchEvent(new Event("change"));
+    });
+</script>
+
+
 
 

@@ -1,5 +1,4 @@
 <template>
-  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-12">
         <div class="card border-info">
@@ -10,7 +9,11 @@
                   <slot name='CardTitle'> Título </slot> </strong></span></h4>
               </div>
               <div class="col-lg-4">
-                <button class="btn btn-success  btn-sm float-md-right"  > <slot name='BtnAddcaption'> Agregar nuevo cargo</slot></button>
+
+                <button class="btn btn-success  btn-sm float-md-right"  >
+                    <slot name='BtnAddcaption'> Agregar nuevo cargo        </slot>
+                </button>
+
               </div>
             </div>
           </div>
@@ -35,36 +38,45 @@
                             <span v-else class="badge badge-success">Activo</span>
                           </td>
                         <td class="text-center" width="15%">
-                          <button type="button" class="btn btn-icon btn-info  btn-xs" data-toggle="tooltip" data-original-title="Editar registro" @click= "EditarReg (Registro)"  ><i class="icon-pencil"></i> </button>
-                          <button type="button" class="btn btn-icon btn-danger  btn-xs" data-toggle="tooltip" data-original-title="Eliminar registro" @click="BorrarReg( Registro )"  ><i class="icon-trash"></i> </button>
+
+
+                        <button type="button" class="btn btn-icon btn-info  btn-xs"
+                                  data-target="#ModalEditReg" data-toggle="modal" data-original-title="Modificar registro" @click="BtnTablaEditReg ( Registro )" >
+                                  <i class="icon-pencil"></i>
+                         </button>
+
+                         <button type="button" class="btn btn-icon btn-danger  btn-xs"
+                                  data-target="#ModalBorraReg" data-toggle="modal" data-original-title="Eliminar registro" @click="BtnTablaBorrarReg ( Registro )" >
+                                  <i class="icon-trash"></i>
+                         </button>
+
                         </td>
                       </tr>
-
                     </tbody>
                   </table>
+                   <pagination-links :Pagination="Pagination"> </pagination-links>
                 </div>
               </div>
             </div>
           </div>
-
          </div>
       </div>
+
+
     </div>
-  </div>
 </template>
 
 <script >
     export default {
-        props : [ 'DatosTabla'],
+        props : [ 'DatosTabla', 'Pagination'],
         methods:{
-              EditarReg (Registro){
-                  this.$emit( 'HijoEditarReg',Registro );
+              BtnTablaEditReg (Registro){
+                  this.$emit( 'BtnTablaEditReg',Registro );
+
               },
-             BorrarReg ( Registro ){
-
-             } ,
+              BtnTablaBorrarReg (Registro){
+                  this.$emit( 'BtnTablaBorrarReg',Registro );
+              },
         }
-
     };
-
 </script>

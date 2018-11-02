@@ -124,7 +124,7 @@ return [
         'mobile'                => 'celular',
         'month'                 => 'mes',
         'name'                  => 'nombre',
-        'nom_cargo'             => 'cargo o perfil',
+        'nom_cargo'             => 'Cargo o perfil',
         'nom_linea'             => 'nombre de línea',
         'nom_med'               => 'nombre de la unidad de medida',
         'nom_mrca'              => 'marca',

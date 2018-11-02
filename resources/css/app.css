@@ -1,3 +1,7 @@
+.active {
+    background-color: #20A8D8 !important;
+}
+
 .btn-xs, .btn-group-xs > .btn {
     padding: 0.4rem ;
     height: 30px;

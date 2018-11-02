@@ -1,5 +1,5 @@
 <template>
-      <div class="card-footer" v-if="Pagination.last_page > 1">
+      <div  class="container" v-if="Pagination.last_page > 1">
             <div class="row justify-content-center">
             <nav aria-label="Page navigation ">
               <ul class="pagination">
@@ -16,7 +16,7 @@
               </ul>
             </nav>
             </div>
-      </div> <!-- /footer -->
+      </div>
 </template>
 
 <script >
@@ -28,14 +28,7 @@
                     ! this.$route.query.page && page ==1 ? 'active': ''
                   ]
           }
-
         }
     };
-
 </script>
 
-<style>
-   .active{
-        color: red;
-  }
-</style>

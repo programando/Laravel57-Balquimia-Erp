@@ -1,14 +1,13 @@
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
           <li class="nav-item mobile-menu d-md-none mr-auto">
-             <router-link :to="{name:'inicio'}" class="nav-link nav-menu-main menu-toggle hidden-xs">
               <i class="ft-menu font-large-1"></i>
           </li>
           <li class="nav-item mr-auto">
-            <router-link :to="{name:'inicio'}" class="navbar-brand">
+            <a class="navbar-brand">
               <img class="brand-logo" alt="Logo" src="{{ FolderImagesApp().'/matraz.jpg' }}">
               <h3 class="brand-text">{{  config('_app.APP_NAME') }}</h3>
-          </router-link>
+          </a>
           </li>
           <li class="nav-item d-none d-md-block float-right">
             <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">

@@ -7,13 +7,11 @@ Vue.config.devtools = true;
 
 export default new Router({
    routes : [
-        { component : require('./components/maestros/Cargos'),
-          name      : 'inicio',
-          path      : '/'     },
+        //{ component : require('./app/inicio/DashBoard'),       name      : 'DashBoard',       path      : '/'     },
+        { component : require('../app/maestros/Cargos'),       name      : 'cargos',       path      : '/'     },
+        { component : require('../app/maestros/Cargos'),        name      : 'cargos',       path      : '/cargos'     },
+        { component : require('../app/inicio/Ejemplo'),         name      : 'ejemplo',      path      : '/ejemplo'     },
 
-        { component : require('./components/maestros/Cargos'),
-          name      : 'cargos',
-          path      : '/cargos'     },
 
    /*     { component : require('./views/maestros/UndsMedida') ,
           name      : 'medidas',
@@ -37,8 +35,8 @@ export default new Router({
         }*/
 
       ],
-   linkExactActiveClass: 'active',
-   //linkActiveClass:   'active',
+  linkExactActiveClass: 'active',
+  //linkActiveClass:   'menu-active',
    mode:              'history',
    scrollBehavior(){
       return { x:0, y:0 };

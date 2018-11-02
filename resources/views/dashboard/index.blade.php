@@ -18,11 +18,9 @@
           <div class  ="content-header row">
           </div>
           <div class  ="content-body">
-
-            <router-view :key="$route.fullPath" >
+           <router-view :key="$route.fullPath" >
               @yield('content')
             </router-view>
-
           </div>
         </div>
       </div>
