@@ -36,7 +36,7 @@
         },
 
     "files": [
-                "app/helpers/helpers.php"
+                "app/Helpers/helpers.php"
         ]
 
     },
