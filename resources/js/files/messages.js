@@ -1,4 +1,5 @@
-var DbDelOk       = 'Regsitro borrado con éxito !!!';
+var DbDelOk       = 'Registro borrado con éxito !!!';
+var DbNewOk       = 'Registro grabado con éxito !!!';
 var DbIntegridad  = "El registro no pudo ser eliminado porque causaría inconsistencias en su base de datos.";
 var DbUpdOk       = 'Regsitro actualizado con éxito !!!';
 var Det_Null      ='No se han agregado registros para grabar. Corrija los datos e intente nuevamente.'
@@ -11,6 +12,6 @@ var Sel_Cliente   = 'Seleccione uno de los clientes para continuar';
 
 export  const MSG = {
     Ped_Prd_Doble, Sel_Cliente, Save_Reg_Ok,Det_Null_Tit, Det_Null,
-    Reg_Doble_Tit,DbIntegridad,DbDelOk,DbUpdOk,
+    Reg_Doble_Tit,DbIntegridad,DbDelOk,DbUpdOk, DbNewOk,
     Ped_Prd_Add
 }

@@ -10,9 +10,11 @@
               </div>
               <div class="col-lg-4">
 
-                <button class="btn btn-success  btn-sm float-md-right"  >
+                <button class="btn btn-success  btn-sm float-md-right"  data-target="#ModalNewReg"  data-toggle="modal" >
+                    <i class="ft-folder"></i>
                     <slot name='BtnAddcaption'> Agregar nuevo cargo        </slot>
                 </button>
+
 
               </div>
             </div>
@@ -38,17 +40,15 @@
                             <span v-else class="badge badge-success">Activo</span>
                           </td>
                         <td class="text-center" width="15%">
+                            <button type="button" class="btn btn-icon btn-info  btn-xs"
+                                      data-target="#ModalEditReg" data-toggle="modal" data-original-title="Modificar registro" @click="BtnTablaEditReg ( Registro )" >
+                                      <i class="icon-pencil"></i>
+                             </button>
 
-
-                        <button type="button" class="btn btn-icon btn-info  btn-xs"
-                                  data-target="#ModalEditReg" data-toggle="modal" data-original-title="Modificar registro" @click="BtnTablaEditReg ( Registro )" >
-                                  <i class="icon-pencil"></i>
-                         </button>
-
-                         <button type="button" class="btn btn-icon btn-danger  btn-xs"
-                                  data-target="#ModalBorraReg" data-toggle="modal" data-original-title="Eliminar registro" @click="BtnTablaBorrarReg ( Registro )" >
-                                  <i class="icon-trash"></i>
-                         </button>
+                             <button type="button" class="btn btn-icon btn-danger  btn-xs"
+                                      data-target="#ModalBorraReg" data-toggle="modal" data-original-title="Eliminar registro" @click="BtnTablaBorrarReg ( Registro )" >
+                                      <i class="icon-trash"></i>
+                             </button>
 
                         </td>
                       </tr>
@@ -62,7 +62,6 @@
          </div>
       </div>
 
-
     </div>
 </template>
 
@@ -72,7 +71,6 @@
         methods:{
               BtnTablaEditReg (Registro){
                   this.$emit( 'BtnTablaEditReg',Registro );
-
               },
               BtnTablaBorrarReg (Registro){
                   this.$emit( 'BtnTablaBorrarReg',Registro );

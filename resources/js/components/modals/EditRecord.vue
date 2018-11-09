@@ -13,29 +13,12 @@
           <br>
       <form class="form-horizontal form-simple" novalidate method="POST" enctype="multipart/form-data"
               @keydown="ErrorsClear($event.target.name)">
+        Descripción del cargo
         <fieldset class="form-group position-relative" :class="{ 'error' : ErrorHas('nom_cargo')}">
-               <input type="text"
-                  v-model="Registro.nom_reg"
-                  class="form-control form-control-lg input-lg"  >
+               <input type="text" class="form-control form-control-lg input-lg"
+                  v-model="Registro.nom_cargo" >
           <div class="invalid-data" v-if="ErrorHas('nom_cargo')"> <i class="ft-x-square"></i>&nbsp;<span class="invalid-data" v-text="ErrorGet('nom_cargo')"> </span></div>
         </fieldset>
-
-
-  <!--
-                        <fieldset class="form-group position-relative has-icon-left mb-0 {{ $errors->has('email') ? "error" : '' }}" >
-                          <input type="text"
-                                  class="form-control form-control-lg input-lg"
-                                  id="email"
-                                  name="email"
-                                  placeholder="Correo electrónico"
-                                  value       ="{{ old('email') }}"  >
-                          <div class="form-control-position"> <i class="ft-user"></i> </div>
-                          {!! $errors->first('email', '<div class="invalid-data"> <i class="ft-x-square"></i>&nbsp;:message</div>')  !!}
-                        </fieldset>
-
-  -->
-
-
 
         <fieldset>
          <input type="checkbox" id="checkbox" v-model="Registro.inactivo" :checked="Registro.inactivo">
@@ -62,13 +45,15 @@
         props : [ 'Registro', 'ErrorsController' ],
         mixins: [FormValidation],
         methods:{
-          ActualizarRegDataBase( Registro ){
+          ActualizarRegDataBase( Registro  ){
               this.$emit( 'ActualizarRegDataBase',Registro );
+          },
+          QuitarClaseError ( Control ) {
+              this.$emit( 'QuitarClaseError',Control );
           },
           CierraModal(){
             this.$emit( 'CierraModal');
           }
-
         }
     };
 

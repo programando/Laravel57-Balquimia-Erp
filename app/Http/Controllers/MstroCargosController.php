@@ -23,9 +23,9 @@ class MstroCargosController extends Controller
 
     public function store(Request $FormData) {
         $this->validate( $FormData , ['nom_cargo'=>'required']);
-        $Cargo           = new Cargos;
-        $Cargo->nom_cargo  = $FormData->nom_cargo;
-        $Cargo->inactivo = 0;
+        $Cargo            = new Cargos;
+        $Cargo->nom_cargo = $FormData->nom_cargo;
+        $Cargo->inactivo  = 0;
         $Cargo->save();
     }
 

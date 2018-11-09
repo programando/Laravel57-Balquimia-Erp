@@ -23,6 +23,7 @@ Vue.component('btn-load-modal-del'              ,require( './components/user_int
 Vue.component('mstro-3-columnas'                ,require( './components/views/MstroDescripActivoEditDel' ));
 Vue.component('delete-record'                   ,require( './components/modals/DeleteRecord' ));
 Vue.component('edit-record'                   ,require( './components/modals/EditRecord' ));
+Vue.component('new-record'                   ,require( './components/modals/NewRecord' ));
 
 const VueApp = new Vue({
     el: '#VueApp',
