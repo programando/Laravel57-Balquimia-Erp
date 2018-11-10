@@ -24,5 +24,9 @@ class BalquimiaServiceProvider extends ServiceProvider
     public function register()
     {
         require_once app_path() . '/Helpers/Users.php';
+        require_once app_path() . '/Helpers/Images.php';
+        require_once app_path() . '/Helpers/Folders.php';
+        require_once app_path() . '/Helpers/Strings.php';
+
     }
 }

@@ -214,7 +214,10 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
 
         // Facades personalizados
-        'Users' => App\Helpers\Users::class,
+        'Users'   => App\Helpers\Users::class,
+        'Images'  => App\Helpers\Images::class,
+        'Folders' => App\Helpers\Folders::class,
+        'Strings' => App\Helpers\Strings::class,
 
     ],
 

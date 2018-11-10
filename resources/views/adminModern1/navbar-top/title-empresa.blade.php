@@ -5,7 +5,7 @@
           </li>
           <li class="nav-item mr-auto">
             <a class="navbar-brand">
-              <img class="brand-logo" alt="Logo" src="{{ FolderImagesApp().'/matraz.jpg' }}">
+              <img class="brand-logo" alt="Logo" src="{{ Folders::ImagesApp().'/matraz.jpg' }}">
               <h3 class="brand-text">{{  config('_app.APP_NAME') }}</h3>
           </a>
           </li>

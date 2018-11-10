@@ -1,11 +1,10 @@
   <li class="dropdown dropdown-user nav-item">
-
              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="mr-1">Hello,
-                  <span class="user-name text-bold-700">John Doe</span>
+                <span class="mr-1">Hola,
+                  <span class="user-name text-bold-700"> {{ $nom_user }} </span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="{{ FolderImagesUsers() .'/avatar-s-19.png' }}" alt="avatar"><i></i></span>
+                  <img src="{{ $avatar }}" alt="avatar"><i></i></span>
               </a>
 
               <div class="dropdown-menu dropdown-menu-right">

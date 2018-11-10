@@ -4,7 +4,7 @@
                   <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="la la-newspaper-o"></i> News</h6>
                   <div id="mega-menu-carousel-example">
                     <div>
-                      <img class="rounded img-fluid mb-1" src="{{ FolderImagesApp() . '/slider/slider-2.png' }}"
+                      <img class="rounded img-fluid mb-1" src="{{ Folders::ImagesApp() . '/slider/slider-2.png' }}"
                       alt="First slide"><a class="news-title mb-0" href="#">Poster Frame PSD</a>
                       <p class="news-content">
                         <span class="font-small-2">January 26, 2018</span>

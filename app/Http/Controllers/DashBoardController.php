@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Helpers\Images;
+use App\Helpers\Users;
+use Auth;
 use Cache;
 use DB;
-use Auth;
+use Illuminate\Http\Request;
 use Redirect;
 
 class DashBoardController extends Controller
@@ -16,10 +17,10 @@ class DashBoardController extends Controller
     }
 
     public function Index(){
-      /*if ( Auth::guest() ){
-          return Redirect('/login');
-      }*/
-      return view('dashboard.index');
+       $id_terc  = auth()->user()->id_terc;
+       $nom_user = Users::Name( $id_terc);
+       $avatar   = Images::UserAvatar ( $id_terc  ) ;
+      return view('dashboard.index', compact ('nom_user','avatar'));
     }
 
     public function MenuLoad(){

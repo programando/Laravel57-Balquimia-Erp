@@ -14,4 +14,8 @@ class Users {
         $user = DB::table('terceros')->where('id_terc', $Id_Terc)->first();
         return (isset($user->pnombre) ? $user->pnombre : 'No reconocido');
     }
+
+    public static function User(){
+        return auth()->user();
+    }
 }

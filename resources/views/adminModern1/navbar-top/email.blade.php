@@ -12,7 +12,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{ FolderImagesUsers() .'/avatar-s-19.png'}}" alt="avatar"><i></i></span>
+                          <img src="{{ Folders::UserImages() .'/avatar-s-19.png'}}" alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
                         <h6 class="media-heading">Margaret Govan</h6>
@@ -27,7 +27,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-busy rounded-circle">
-                          <img src="{{ FolderImagesUsers() .'/avatar-s-2.png' }}" alt="avatar"><i></i></span>
+                          <img src="{{ Folders::UserImages()  .'/avatar-s-2.png' }}" alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
                         <h6 class="media-heading">Bret Lezama</h6>
@@ -42,7 +42,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-online rounded-circle">
-                          <img src="{{ FolderImagesUsers() .'/avatar-s-3.png' }}" alt="avatar"><i></i></span>
+                          <img src="{{ Folders::UserImages()  .'/avatar-s-3.png' }}" alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
                         <h6 class="media-heading">Carie Berra</h6>
@@ -57,7 +57,7 @@
                     <div class="media">
                       <div class="media-left">
                         <span class="avatar avatar-sm avatar-away rounded-circle">
-                          <img src="{{ FolderImagesUsers() .'/avatar-s-6.png' }}" alt="avatar"><i></i></span>
+                          <img src="{{ Folders::UserImages()  .'/avatar-s-6.png' }}" alt="avatar"><i></i></span>
                       </div>
                       <div class="media-body">
                         <h6 class="media-heading">Eric Alsobrook</h6>
