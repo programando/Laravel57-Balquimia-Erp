@@ -9,7 +9,6 @@ Route::get('/demo-user', function () {
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
 Route::post('login' , 'LoginController@PostLogin')->name('login');
-
 Route::get('logout' , 'LoginController@getLogOut')->name('logout');
 
 /** PASSWORD RESET */

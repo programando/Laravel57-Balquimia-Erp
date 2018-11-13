@@ -5,7 +5,7 @@
       <li>  <router-link :to="{name:'DashBoard'}" class="menu-item">Dashboard   </router-link>     </li>
 
         <li class=" nav-item">
-         <i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Parámetros</span>
+         <i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Configuración</span>
           <ul class="menu-content">
             <li>  <router-link :to="{name:'cargos'}" class="menu-item">Cargos   </router-link>     </li>
             <li>  <router-link :to="{name:'ejemplo'}" class="menu-item">Otro Menu   </router-link>     </li>

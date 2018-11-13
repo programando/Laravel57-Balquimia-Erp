@@ -42,7 +42,7 @@ th {
  td {
     padding: 0.2rem 0.4rem !important;
     vertical-align: middle !important;
-    font-size: 13px;
+    font-size: 11.5px;
 }
 
 blockquote .frase{
@@ -50,5 +50,10 @@ blockquote .frase{
   font-style: italic ;
   margin-right: 20px;
   margin-left: 20px;
+}
+
+ol li, ul li, dl li {
+    line-height: 1;
+    font-size: 15px;
 }
 
