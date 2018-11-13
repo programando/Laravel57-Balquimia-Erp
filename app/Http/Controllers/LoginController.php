@@ -59,9 +59,11 @@ class LoginController extends Controller
             Session::flush();
             Cache::flush();
             //return Redirect('/login');
-            $this.ShowLogin();
+          $Frases = DB::select(' call frases_qry_dia() ');
+          $Frase   = $Frases[0]->nom_frase;
+          $Autor   = $Frases[0]->autor;
+          return view('login.login', compact('Frase','Autor'));
     }
-
 
     public function PasswordRememberShowForm () {
         return view('login.passwors-reset-show-form');
