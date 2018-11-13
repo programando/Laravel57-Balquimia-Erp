@@ -25,6 +25,7 @@ Vue.component('delete-record'                   ,require( './components/modals/D
 Vue.component('edit-record'                   ,require( './components/modals/EditRecord' ));
 Vue.component('new-record'                   ,require( './components/modals/NewRecord' ));
 
+
 const VueApp = new Vue({
     el: '#VueApp',
     router,

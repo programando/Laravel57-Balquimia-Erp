@@ -7,10 +7,11 @@ Vue.config.devtools = true;
 
 export default new Router({
    routes : [
-        //{ component : require('../app/inicio/DashBoard'),        name      : 'DashBoard',       path      : '/'     },
-        { component : require('../app/maestros/Cargos'),        name      : 'cargos',       path      : '/'     },
-        { component : require('../app/maestros/Cargos'),        name      : 'cargos',       path      : '/cargos'     },
-        { component : require('../app/inicio/Ejemplo'),         name      : 'ejemplo',      path      : '/ejemplo'     },
+        { component : require('../app/inicio/DashBoard'),      name       : 'DashBoard',       path      : '/'     },
+        { component : require('../app/maestros/Cargos'),        name      : 'cargos',          path      : '/cargos'     },
+        { component : require('../app/inicio/Ejemplo'),         name      : 'ejemplo',         path      : '/ejemplo'     },
+
+        { component : require('../components/views/CerrarSistema'),         name      : 'logout',         path      : '/logout'     },
 
 
    /*     { component : require('./views/maestros/UndsMedida') ,
