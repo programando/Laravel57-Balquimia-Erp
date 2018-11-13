@@ -49,11 +49,13 @@ class LoginController extends Controller
 
     public function getLogOut() {
             /*
-            Session::flush();
+
             Cache::flush();
             return redirect('/login');*/
             //return "Mensaje de prueba";
             auth::logout();
+            Session::flush();
+            Cache::flush();
             dd( auth()->check() );
     }
 
