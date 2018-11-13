@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
-
 use App\Events\LoginSendMailResetPassword;
-/** MODELS **/
+use App\Helpers\Users;
+use App\Http\Requests\LoginRequest;
+use Auth;
+use Cache;
+use Carbon\Carbon;
+use DB;
+use Illuminate\Http\Request;
+use Redirect;
+use Session;
 use \App\Models\Frase;
 use \App\Models\TercerosUser        as Terceros;
 use \App\Models\TercerosUsersToken  as UserToken;
-
-use Carbon\Carbon;
-
-
-/** FACADES **/
-//***************//
-
-use Auth;
-use Cache;
-use DB;
-use Redirect;
-use Session;
 
 
 
@@ -55,12 +48,13 @@ class LoginController extends Controller
 
 
     public function getLogOut() {
-            /*Auth::logout();
+            /*
             Session::flush();
             Cache::flush();
             return redirect('/login');*/
             //return "Mensaje de prueba";
-            dd("Mensaje de salida");
+            auth::logout();
+            dd( auth()->check() );
     }
 
     public function PasswordRememberShowForm () {
