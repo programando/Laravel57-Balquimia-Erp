@@ -13,7 +13,7 @@
                 <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Tareas</a>
 
                 <div class="dropdown-divider"> </div>
-                <a class="dropdown-item" href="{{ route('cerrar-sistema')}}"><i class="ft-power"></i> Cerrar Sistema</a>
+                   <a class="dropdown-item" href="{{ route('logout')}}"><i class="ft-power"></i> Cerrar Sistema</a>
 
                    <!--
                      <router-link :to="{name:'logout'}" class="dropdown-item"><i class="ft-power"></i>Cerrar Sistema   </router-link>
