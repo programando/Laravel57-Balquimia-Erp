@@ -55,7 +55,7 @@ class LoginController extends Controller
             //return "Mensaje de prueba";
             auth::logout();
             Session::flush();
-            Cache::flush();
+            //Cache::flush();
             dd( auth()->check() );
     }
 
