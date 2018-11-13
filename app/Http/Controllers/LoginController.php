@@ -55,8 +55,10 @@ class LoginController extends Controller
             //return "Mensaje de prueba";
             auth::logout();
             Session::flush();
+            return redirect('/login')
             //Cache::flush();
-            dd( auth()->check() );
+            //Cache::flush();
+            //dd( auth()->check() );
     }
 
     public function PasswordRememberShowForm () {
