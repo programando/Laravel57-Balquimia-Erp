@@ -58,7 +58,8 @@ class LoginController extends Controller
             Auth::logout();
             Session::flush();
             Cache::flush();
-            return Redirect('/login');
+            //return Redirect('/login');
+            $this.ShowLogin();
     }
 
 
