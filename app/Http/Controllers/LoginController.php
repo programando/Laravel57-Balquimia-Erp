@@ -21,20 +21,17 @@ use \App\Models\TercerosUsersToken  as UserToken;
 class LoginController extends Controller
 {
     public function ShowLogin(){
-          $Frases = $this->FraseDelDia();
-          $Frase = $Frases['Frase'];
-          $Autor = $Frases['Autor'];
+          $Datos = $this->FraseDelDia();
+          $Frase = $Datos['Frase'];
+          $Autor = $Datos['Autor'];
           return view('login.login', compact('Frase','Autor'));
     }
 
     private function FraseDelDia(){
           $Frases = DB::select(' call frases_qry_dia() ');
-          $Frase   = $Frases[0]->nom_frase;
-          $Autor   = $Frases[0]->autor;
-          $Datos = array (
-                'Frase' => $Frase,
-                'Autor'  => $Autor
-              );
+          $Frase  = $Frases[0]->nom_frase;
+          $Autor  = $Frases[0]->autor;
+          $Datos  = array ( 'Frase' => $Frase,  'Autor'  => $Autor  );
           return $Datos;
     }
 //
@@ -62,11 +59,8 @@ class LoginController extends Controller
           $Frases = $this->FraseDelDia();
             auth::logout();
             Session::flush();
-            Cache::flush();
-
-          $Frase = $Frases['Frase'];
-          $Autor = $Frases['Autor'];
-          return view('login.login', compact('Frase','Autor'));
+            //Cache::flush();
+            return Redirect('/login');
     }
 
     public function PasswordRememberShowForm () {
