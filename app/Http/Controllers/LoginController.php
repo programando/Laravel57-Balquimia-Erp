@@ -72,7 +72,7 @@ class LoginController extends Controller
 
          $email    = $FormData->input('email');
          $registro = Terceros::where('email', $email )->first();
-
+         dd($registro );
         // Si no es empleado o no está activo... no puedo enviarle correo
          if ( ! $registro->empleado && ! $registro->activo ){
            //return Redirect()->route('reset-password')
