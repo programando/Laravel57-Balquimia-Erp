@@ -26,6 +26,7 @@ class LoginSendMailResetPassword
     {
         $this->email = $email;
         $this->token = $token;
+         dd(  $token);
     }
 
     /**

@@ -85,7 +85,7 @@ class LoginController extends Controller
 
          //Iniciar Evento envio correo
          LoginSendMailResetPassword::dispatch( $email, $token );
-         dd(  $token);
+
           //Graba el Token en la base de datos
           $this->TokenSave(   $email , $token);
           //muestra mensaje confirmación de envío de correo
