@@ -72,15 +72,15 @@ class LoginController extends Controller
 
          $email    = $FormData->input('email');
          $registro = Terceros::where('email', $email )->first();
-        return Redirect('/login');
+        //return Redirect('/login');
         // Si no es empleado o no está activo... no puedo enviarle correo
-         if ( ! $registro->empleado &&  ! $registro->inactivo ){
+         //if ( ! $registro->empleado &&  ! $registro->inactivo ){
            //return Redirect()->route('reset-password')
 
           return  redirect('/reset-password')
                 ->withInput( $FormData->only('email','remember_me'))
                 ->withErrors( ['email' =>  trans('_app.email_error') ] );
-         }
+         //}
          $token                 = str_random(100);
 
          //Iniciar Evento envio correo
