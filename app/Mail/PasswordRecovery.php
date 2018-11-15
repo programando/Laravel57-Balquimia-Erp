@@ -20,7 +20,7 @@ class PasswordRecovery extends Mailable
     }
 
     public function build()    {
-        dd ( $this->Token . ' ' . $this->Email . ' ' . $this->Text_Soporte );
+
         return $this->view('mails.password-revovery')
               ->subject ('Recuperación de Contraseña');
     }
