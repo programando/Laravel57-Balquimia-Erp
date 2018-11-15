@@ -11,6 +11,7 @@ class LoginSendMailResetPasswordToUser
 {
 
     public function handle(LoginSendMailResetPassword $event)  {
+       dd(  $event );
         Mail::to( $event->email )->send( new PasswordRecovery ( $event->email, $event->token) );
     }
 
