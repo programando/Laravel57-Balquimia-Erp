@@ -59,7 +59,7 @@ class LoginController extends Controller
           $Frases = $this->FraseDelDia();
             auth::logout();
             Session::flush();
-            //Cache::flush();
+            Cache::flush();
             return Redirect('/login');
     }
 
@@ -75,7 +75,8 @@ class LoginController extends Controller
 
         // Si no es empleado o no está activo... no puedo enviarle correo
          if ( ! $registro->empleado && ! $registro->activo ){
-           return Redirect()->route('reset-password')
+           //return Redirect()->route('reset-password')
+          return  redirect('/reset-password')
                 ->withInput( $FormData->only('email','remember_me'))
                 ->withErrors( ['email' =>  trans('_app.email_error') ] );
          }
