@@ -48,7 +48,7 @@
                         </fieldset>
 
                           <br>
-                        <button type="submit" class="btn btn-danger btn-lg"><i class="ft-unlock"></i> Actualizar Contreseña</button>
+                        <button type="submit" class="btn btn-success btn-lg"><i class="ft-unlock"></i> Actualizar Contraseña</button>
                       </form>
                     </div>
                   </div>
