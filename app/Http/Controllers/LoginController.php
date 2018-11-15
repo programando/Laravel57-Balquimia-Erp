@@ -82,9 +82,10 @@ class LoginController extends Controller
                 ->withErrors( ['email' =>  trans('_app.email_error') ] );
          }
          $token                 = str_random(100);
-         dd(  $token);
+
          //Iniciar Evento envio correo
          LoginSendMailResetPassword::dispatch( $email, $token );
+         dd(  $token);
           //Graba el Token en la base de datos
           $this->TokenSave(   $email , $token);
           //muestra mensaje confirmación de envío de correo
