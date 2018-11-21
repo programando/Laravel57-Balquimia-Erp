@@ -56,7 +56,6 @@ class LoginController extends Controller
 
 
     public function getLogOut() {
-          $Frases = $this->FraseDelDia();
             auth::logout();
             Session::flush();
             Cache::flush();

@@ -1,4 +1,6 @@
 <?php
+//
+//  1118180
 
 Route::get('/demo-user', function () {
     return Users::Name(1);
@@ -36,8 +38,10 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    // Route::get('/terceros/contactos'                  ,'TercerosController@Contactos'         );
    // Route::post('/pedido/grabar'                      ,'PedidosController@Grabar'            );
    // Route::get('/pedido/dias/financiacion'                      ,'PedidosController@DiasFinanciacion'            );
-
 });
-Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
+//Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
+Route::middleware(['AppPreventBackHistory'])->group( function(){
+    Route::get ('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
+});
 
 
