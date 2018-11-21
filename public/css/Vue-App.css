@@ -53,8 +53,42 @@ blockquote .frase{
 }
 
 ol li, ul li, dl li {
-    line-height: 1;
+    line-height: 1.8;
     font-size: 15px;
+}
+
+.invalid-data {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 90%;
+  color: red;
+}
+
+.invalid-data-white {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 90%;
+  color: white;
+}
+
+.brand-text {
+ padding-left: 1px !important;
+}
+
+.main-menu.menu-dark .navigation > li > a {
+    padding: 10px 30px 10px 8px;
+}
+.nav-item-app {
+  padding: 5px 30px 5px 8px !important;
+}
+.menu-item-op {
+  padding: 2px 30px 2px 35px !important;
+
+}
+
+ .link-active  {
+   font-weight: bold;
+   color: yellow !important;
 }
 
 

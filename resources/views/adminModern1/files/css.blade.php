@@ -20,7 +20,6 @@
 <!-- END Page Level CSS-->
 
 <!-- BEGIN Custom CSS-->
-<link href="{{asset('css/app-styles.css')}}" rel="stylesheet">
 <link href="{{mix('css/Vue-App.css')}}" rel="stylesheet">
 
 <!-- END Custom CSS-->
