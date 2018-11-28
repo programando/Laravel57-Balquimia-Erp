@@ -27,7 +27,6 @@ class MstroCargo extends Model
   ];
 
     public function setNomCargoAttribute ( $value ){
-        //$value = TrimString ( $value,49);
         $value = Strings::UpperTrim ( $value,49);
         $this->attributes['nom_cargo'] = $value ;
     }

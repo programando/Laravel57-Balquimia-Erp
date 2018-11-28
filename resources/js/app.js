@@ -33,3 +33,12 @@ const VueApp = new Vue({
 
 });
 
+/*
+  librerias usadas
+  ----------------------------------------------------------------------------------------------------------------
+  NOMBRE            USO                             URL
+  ----------------------------------------------------------------------------------------------------------------
+                   Componentes hechos con vue       https://madewithvuejs.com
+ vue-datetime       Manejo de fechas y horas        https://github.com/mariomka/vue-datetime?ref=madewithvuejs.com
+                    Demo                            https://mariomka.github.io/vue-datetime/
+*/
