@@ -12,7 +12,7 @@ use App\Helpers\Strings;
 
 class Tercero extends Eloquent
 {
-  protected $dateFormat = 'd-m-Y H:i:s';
+  //protected $dateFormat = 'd-m-Y H:i:s';
   protected $primaryKey = 'id_terc';
   public    $timestamps = false;
 
@@ -55,29 +55,20 @@ class Tercero extends Eloquent
 /* MUTATORS */
 /***************/
   public function setPnombreAttribute( $value ){
-        $this->attribute ['pnombre'] = Strings::UpperTrim ($value , 30)
+        $this->attribute ['pnombre'] = Strings::UpperTrim ($value , 30);
   }
   public function setSnombreAttribute( $value ){
-        $this->attribute ['snombre'] = Strings::UpperTrim ($value , 30)
+        $this->attribute ['snombre'] = Strings::UpperTrim ($value , 30);
   }
   public function setPapellidoAttribute( $value ){
-        $this->attribute ['papellido'] = Strings::UpperTrim ($value , 30)
+        $this->attribute ['papellido'] = Strings::UpperTrim ($value , 30);
   }
   public function setSapellidoAttribute( $value ){
-        $this->attribute ['sapellido'] = Strings::UpperTrim ($value , 30)
+        $this->attribute ['sapellido'] = Strings::UpperTrim ($value , 30);
   }
     public function setRazonSocAttribute( $value ){
-        $this->attribute ['razon_soc'] = Strings::UpperTrim ($value , 100)
+        $this->attribute ['razon_soc'] = Strings::UpperTrim ($value , 100);
   }
-
-    public function setNomSysAttribute( $value ){
-      $pnombre   = $this->attribute['pnombre'];
-      $papellido = $this->attribute['papellido'];
-      $sapellido = $this->attribute['sapellido'];
-      $razon_soc = $this->attribute['razon_soc'];
-
-      $this->attribute['nom_sys'] = $pnombre . ' ' . $papellido ;
-    }
 
 /*********************/
 /* RELACIONES  */
@@ -113,7 +104,6 @@ class Tercero extends Eloquent
 		return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_mcipio');
 	}
 
-
 	public function Contactos()	{
 		return $this->hasMany(\App\Models\TercerosContacto::class, 'id_terc');
 	}
@@ -125,16 +115,33 @@ class Tercero extends Eloquent
 	public function Usuario()	{
 		return $this->hasOne(\App\Models\TercerosUser::class, 'id_terc');
 	}
+    public function Vendedor() {
+    return $this->hasOne(\App\Models\Tercero::class, 'id_terc_vend_ppal');
+  }
+
 
 
    /*//////////////////////////////////////
         SCOPES
    *//////////////////////////////////////
        public function scopeClientes($query){
-            return $query->where('cliente','=','1');
+            return $query->Where('cliente','=','1');
         }
+
         public function scopeClientesActivos($query){
-            return $query->where('cliente','=','1')
-                  ->where('activo','=','1');
+            return $query->Where('cliente','1')
+                  ->Where('inactivo','0')
+                  ->Where('terc_mnv', '0');
         }
+
+        public function scopeNomSysSucNitNomCcial ( $query, $Filtro){
+           return $query
+                    ->Where('nom_sys'         ,'LIKE'   , "%$Filtro%")
+                    ->orWhere('nom_suc'       ,'LIKE'   , "%$Filtro%")
+                    ->orWhere('nro_identif'   ,'LIKE'   , "%$Filtro%")
+                    ->orWhere('nom_ccial'     ,'LIKE'   , "%$Filtro%");
+        }
+
+
+
 }

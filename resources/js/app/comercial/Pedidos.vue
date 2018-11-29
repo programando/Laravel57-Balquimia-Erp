@@ -1,30 +1,32 @@
 <template>
   <div class="container">
     <div class="card" >
+      <strong>
       <div class="card-header" style="background-color: #dbdce0;">
         <h4><i class="la la-bars"></i>&nbsp;&nbsp;Registro de Pedidos</h4>
-
       </div>
+      </strong>
       <div class="card-content ">
         <div class="card-body">
               <div class="row">
                 <div class="col-md-3">
                   <label>Cliente</label>
                   <div class="form-group form-inline">
-                    <button class="btn btn-primary btn-xs" data-target="#ModalClientesBuscar"  data-toggle="modal">
+                    <button class="btn btn-primary btn-xs" data-target="#ModalClientesBuscar"  data-toggle="modal"
+                      @click="NuevaBusqueda">
                       <i class="la la-search"></i></button>
-                    &nbsp; <input   class="form-control border-primary campo-form" placeholder="Nombre del cliente" disabled="disabled">
+                    &nbsp; <input   class="form-control border-primary campo-form" v-model="NombreCliente" placeholder="Nombre del cliente" disabled="disabled">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <label>Sucursal</label>
                   <div class="form-group">
-                    <input   class="form-control border-primary campo-form" placeholder="Sucursal" disabled="disabled">
+                    <input   class="form-control border-primary campo-form" v-model ='nom_suc' placeholder="Sucursal" disabled="disabled">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <label>Vendedor</label>
-                  <input   class="form-control border-primary campo-form" placeholder="Vendedor" disabled="disabled">
+                  <input   class="form-control border-primary campo-form" v-model="nom_vend_ppal" placeholder="Vendedor" disabled="disabled">
                 </div>
                 <div class="col-md-3">
                   <label>Fecha Despacho</label>
@@ -48,23 +50,32 @@
 
               <ul class="nav nav-tabs nav-linetriangle no-hover-bg">
                 <li class="nav-item">
-                  <a class="nav-link active" id="base-tab41" data-toggle="tab" aria-controls="tab41" href="#tab41" aria-expanded="true">Últimas Ventas</a>
+                  <a class="nav-link active" id="base-tab41" data-toggle="tab" aria-controls="tab41" href="#ComprasCliente" aria-expanded="true">Últimas Ventas</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#tab42" aria-expanded="false">Pedido Generado</a>
+                  <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#PedidoGenerado" aria-expanded="false">Pedido Generado</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#EstadoCuenta" aria-expanded="false">Estado de Cuenta</a>
                 </li>
 
               </ul>
 
               <div class="tab-content px-1 pt-1">
 
-                <div role="tabpanel" class="tab-pane active" id="tab41" aria-expanded="true" aria-labelledby="base-tab41">
-                    <ProductosComprados></ProductosComprados>
+                <div role="tabpanel" class="tab-pane active" id="ComprasCliente" aria-expanded="true" aria-labelledby="base-tab41">
+                      <!-- Componete para mostrar las últimas compras de un cliente-->
+                    <ProductosComprados :IdCliente="id_terc"></ProductosComprados>
                 </div>
 
-                <div class="tab-pane" id="tab42" aria-labelledby="base-tab42">
-                  <p>Tab 2.</p>
+                <div class="tab-pane" id="PedidoGenerado" aria-labelledby="base-tab42">
+                  <p>Pedido Generadao</p>
+                </div>
+
+                <div class="tab-pane" id="EstadoCuenta" aria-labelledby="base-tab42">
+                  <p>Estado de Cuenta</p>
                 </div>
 
              </div>
@@ -72,7 +83,12 @@
         </div>
       </div>
     </div>   <!-- / Card-->
-  <ClientesBuscar></ClientesBuscar>
+
+        <!-- Modal para buscar terceros -->
+      <ClientesBuscar @SeleccionarTercero="SeleccionarTercero" UrlBusqueda='/clientes/buscar/'>
+         <template slot='SearchTitle'>Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nombre Comercial</template>
+         <template slot='ModalTitle'>Búsqueda de Clientes</template>
+      </ClientesBuscar>
 
   </div>
 
@@ -86,13 +102,41 @@
 // You need a specific loader for CSS files
 import 'vue-datetime/dist/vue-datetime.css'
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        data() {
+            return {
+                nom_suc : '',
+                 NombreCliente : '',
+                 id_terc       : 0,
+                 nom_vend_ppal :'',
+            }
         },
+
 
      components: {
           datetime: Datetime, ProductosComprados, ClientesBuscar
-  }
-    }
+        },
+     methods: {
+          SeleccionarTercero( DatosCliente ){
+              this.id_terc       = DatosCliente.id_terc;
+              this.nom_suc       = DatosCliente.nom_suc;
+              this.NombreCliente = DatosCliente.nom_sys;
+              this.BuscarVendedores();
+          },
+         BuscarVendedores(){
+              let Me  = this;
+              let Url = '/clientes/vendedores/'+ '?id_terc='+this.id_terc;
+              let DatosCliente ='';
+              axios.get( Url )
+                .then( response => {
+                    DatosCliente     = response.data.Cliente;
+                    Me.nom_vend_ppal = response.data.Vendedores[0].nom_vend_ppal;
+                    Me.nom_suc       = DatosCliente.municipio.nom_mcpio.trim() + ' ' + DatosCliente.nom_suc.trim() ;
+                })
+          },
+        NuevaBusqueda() {
+            this.id_terc       = 0;
+        },
+     }
+   }
 </script>
 

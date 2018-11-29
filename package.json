@@ -20,6 +20,8 @@
     },
     "dependencies": {
         "luxon": "^1.8.0",
+        "moment": "^2.22.2",
+        "numeral": "^2.0.6",
         "vue-datetime": "^1.0.0-beta.8",
         "vuex": "^3.0.1",
         "weekstart": "^1.0.0"

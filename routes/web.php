@@ -30,9 +30,9 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    // Route::resource('/sublineas'     , 'MstroLineasSubLineasController'    ,['except'=>'edit','create', 'show'] );
    // Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
 
-   // Route::get('/clientes/buscar'                     ,'TercerosController@ClientesBusqueda'     );
-   // Route::get('/clientes/vendedores'                 ,'TercerosController@VendedoresCliente' );
-   // Route::get('/clientes/compras'                    ,'TercerosController@Compras'           );
+    Route::get('/clientes/buscar'                     ,'TercerosController@ClientesBusqueda'     );
+    Route::get('/clientes/vendedores'                 ,'TercerosController@ClientesVendedorPrincipal' );
+    Route::get('/clientes/compras'                    ,'TercerosController@ClientesProductosComprados'           );
    // Route::get('/terceros/notas/ventas'               ,'TercerosController@NotasVenta'        );
    // Route::get('/terceros/notas/cartera'              ,'TercerosController@NotasCartera'      );
    // Route::get('/terceros/contactos'                  ,'TercerosController@Contactos'         );

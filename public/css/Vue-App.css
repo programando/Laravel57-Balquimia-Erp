@@ -24,7 +24,7 @@ tr {
     padding: 0.2rem !important;
 }
 .card-header {
-    padding: 1rem !important;
+    padding: 0.5rem !important;
 }
 
 label {
@@ -40,7 +40,7 @@ label {
        line-height: 20px;
  }
  form .form-group {
-    margin-bottom: auto !important;
+    margin-bottom: 10px !important;
 }
 
 th {

@@ -21,31 +21,25 @@ class TercerosController extends Controller {
   }
 
     public function ClientesBusqueda(Request $FormData ){
-        $Filtro =  $FormData->filtro;
-        if ( !$Filtro ){
-                      $Clientes = Terceros::Clientes()
-                    ->select('nro_identif','id_terc','nom_sys','nom_suc')
-                    ->orderBy('nom_sys')->take(10)->get();
-        }else {
-          $Clientes = Terceros::Clientes()
-                      ->Where('nom_sys','like', '%'.$Filtro .'%')
-                      ->orWhere('nom_suc','like', '%'.$Filtro .'%')
-                      ->orWhere('nro_identif','like', '%'.$Filtro .'%')
+          $BuscarDato =  $FormData->filtro;
+          $Clientes = Terceros::ClientesActivos()
+                      ->NomSysSucNitNomCcial( $BuscarDato )
                       ->select('nro_identif','id_terc','nom_sys','nom_suc')
                       ->orderBy('nom_sys')->get();
-            }
         return  $Clientes;
     }
 
-    public function VendedoresCliente ( Request $FormData ){
+
+
+    public function ClientesVendedorPrincipal ( Request $FormData ){
         $id_terc      = $FormData->id_terc;
-        $DatosCliente = Terceros::with('Municipio')->findOrFail( $id_terc );
+        $DatosCliente = Terceros::with(['Municipio'])->findOrFail( $id_terc );
         $Vendedores   = DB::select(' call clientes_busca_vendedores (?)', array($id_terc));
         $Vendedores   = collect($Vendedores);
         return ['Vendedores' => $Vendedores, 'Cliente' => $DatosCliente];
     }
 
-    public function Compras ( Request $FormData ){
+    public function ClientesProductosComprados ( Request $FormData ){
         $id_terc = $FormData->id_terc;
         $Ventas  = DB::select(' call clientes_productos_comprados (?)', array($id_terc));
         $Ventas  = collect($Ventas);

@@ -6,8 +6,8 @@
  */
 
 require('./files/bootstrap');
-
-//window.Vue = require('vue');
+var Moment = require('moment');
+var Numeral = require('numeral');
 
 import Vue              from 'vue';
 import router           from './files/routes';
@@ -25,6 +25,8 @@ Vue.component('delete-record'                   ,require( './components/modals/D
 Vue.component('edit-record'                     ,require( './components/modals/EditRecord' ));
 Vue.component('new-record'                      ,require( './components/modals/NewRecord' ));
 
+Vue.filter('FormatoFecha', (value) => {  return Moment(value).format('DD-MMM-YYYY');     });
+Vue.filter('NumeroEntero', (value) => {  return Numeral(value).format('0,0');             });
 
 const VueApp = new Vue({
     el: '#VueApp',
