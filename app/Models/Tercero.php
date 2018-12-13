@@ -134,9 +134,9 @@ class Tercero extends Eloquent
                   ->Where('terc_mnv', '0');
         }
 
-        public function scopeNomSysSucNitNomCcial ( $query, $Filtro){
+        public function scopeNomFullSucNitNomCcial ( $query, $Filtro){
            return $query
-                    ->Where('nom_sys'         ,'LIKE'   , "%$Filtro%")
+                    ->Where('nom_full'         ,'LIKE'   , "%$Filtro%")
                     ->orWhere('nom_suc'       ,'LIKE'   , "%$Filtro%")
                     ->orWhere('nro_identif'   ,'LIKE'   , "%$Filtro%")
                     ->orWhere('nom_ccial'     ,'LIKE'   , "%$Filtro%");

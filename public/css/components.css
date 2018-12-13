@@ -453,10 +453,13 @@ footer.footer-dark {
     .main-menu a:hover, .main-menu a:focus {
       text-decoration: none; }
 
+
+
 .navigation {
   font-size: 1.1rem;
   letter-spacing: 0.2px;
-  font-family: "Quicksand", Georgia, "Times New Roman", Times, serif;
+ font-family: "Quicksand", Georgia, "Times New Roman", Times, serif;
+
   font-weight: 400;
   overflow-y: hidden;
   padding-bottom: 20px; }

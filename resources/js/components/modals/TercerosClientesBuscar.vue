@@ -47,7 +47,7 @@
                         <tbody>
                         <tr v-for="Tercero in TerceroEncontrado" :key="Tercero.id_terc">
                             <td v-text="Tercero.nro_identif"></td>
-                            <td v-text="Tercero.nom_sys"></td>
+                            <td v-text="Tercero.nom_full"></td>
                             <td v-text="Tercero.nom_suc"> </td>
                             <td class="text-center">
                              <button type="button" class="btn btn-success btn-xs"

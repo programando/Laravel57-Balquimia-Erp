@@ -35,7 +35,7 @@
                   :phrases="{ok: 'Seleccionar', cancel: 'Salir'}" ></datetime>
                 </div>
               </div>   <!-- /Row 1-->
-              <br>
+
               <div class="row">
                 <div class="col-sm-3">
                   <label>Orden Compra</label>
@@ -61,21 +61,42 @@
                   <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#EstadoCuenta" aria-expanded="false">Estado de Cuenta</a>
                 </li>
 
+                <li class="nav-item">
+                  <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#ObservVentas" aria-expanded="false">Observ. Ventas</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#ObservCartera" aria-expanded="false">Notas Cartera</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="base-tab42" data-toggle="tab" aria-controls="tab42" href="#Contactos" aria-expanded="false">Contactos</a>
+                </li>
               </ul>
 
               <div class="tab-content px-1 pt-1">
 
                 <div role="tabpanel" class="tab-pane active" id="ComprasCliente" aria-expanded="true" aria-labelledby="base-tab41">
                       <!-- Componete para mostrar las últimas compras de un cliente-->
-                    <ProductosComprados :IdCliente="id_terc"></ProductosComprados>
+                    <ProductosComprados :IdTercero="id_terc"></ProductosComprados>
                 </div>
 
                 <div class="tab-pane" id="PedidoGenerado" aria-labelledby="base-tab42">
-                  <p>Pedido Generadao</p>
+
                 </div>
 
                 <div class="tab-pane" id="EstadoCuenta" aria-labelledby="base-tab42">
-                  <p>Estado de Cuenta</p>
+                      <CarteraCliente :IdTercero="id_terc"></CarteraCliente>
+                </div>
+                <div class="tab-pane" id="ObservVentas" aria-labelledby="base-tab42">
+                    <NotasVenta :IdTercero="id_terc"></NotasVenta>
+                </div>
+
+                <div class="tab-pane" id="ObservCartera" aria-labelledby="base-tab42">
+                  <NotasCartera :Idtercero = "id_terc"></NotasCartera>
+                </div>
+
+                <div class="tab-pane" id="Contactos" aria-labelledby="base-tab42">
+                  <Contactos :IdTercero="id_terc"></Contactos>
                 </div>
 
              </div>
@@ -95,8 +116,13 @@
 </template>
 
 <script>
-  import ProductosComprados from '../../components/clientes/productos_comprados';
-  import ClientesBuscar     from '../../components/modals/TercerosClientesBuscar';
+  import ProductosComprados  from '../../components/terceros/productos_comprados';
+  import ClientesBuscar      from '../../components/modals/TercerosClientesBuscar';
+  import Contactos           from '../../components/terceros/contactos'
+  import NotasCartera        from '../../components/terceros/notas_cartera'
+  import NotasVenta          from '../../components/terceros/notas_ventas'
+  import CarteraCliente      from '../../components/terceros/cliente_cartera'
+
   import { Datetime } from 'vue-datetime';
 
 // You need a specific loader for CSS files
@@ -110,16 +136,13 @@ import 'vue-datetime/dist/vue-datetime.css'
                  nom_vend_ppal :'',
             }
         },
-
-
-     components: {
-          datetime: Datetime, ProductosComprados, ClientesBuscar
+     components: { datetime: Datetime, ProductosComprados, ClientesBuscar, Contactos, NotasCartera, NotasVenta, CarteraCliente
         },
      methods: {
           SeleccionarTercero( DatosCliente ){
               this.id_terc       = DatosCliente.id_terc;
               this.nom_suc       = DatosCliente.nom_suc;
-              this.NombreCliente = DatosCliente.nom_sys;
+              this.NombreCliente = DatosCliente.nom_full;
               this.BuscarVendedores();
           },
          BuscarVendedores(){

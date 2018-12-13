@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-sm-12" >
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover" >
+      <div class="table-responsive" v-if="ProductosComprados.length" >
+        <table class="table table-bordered table-striped table-hover table-sm" >
           <thead>
             <tr>
               <th> Fecha</th>
@@ -40,27 +40,31 @@
         </tbody>
       </table>
     </div>
+
+      <div class="col-sm-12 text-center" v-else>
+        <br><br>
+        <strong><h4>No se han encontrado registros en ventas</h4></strong><br><br>
+      </div>
+
   </div>
 </div><!-- Row-->
 </template>
 
 
 <script>
-
+import FormValidation from '../../mixins/FormValidation';
   export default{
-    props : ['IdCliente'],
+    props : ['IdTercero'],
      data() {
         return {
             ProductosComprados : [],
+            ErrorsController  : {},
         }
       },
-    watch: {
-            IdCliente : function(){
-              if ( this.IdCliente == 0 ){
-                  this.ProductosComprados = [];
-              }else{
-                this.BuscarCompras();
-              }
+      mixins: [FormValidation],
+      watch: {
+            IdTercero : function(){
+              this.ProductosComprados = this.BuscarCompras() ? this.IdTercero > 0 : [];
             }
         },
     methods: {
@@ -69,12 +73,12 @@
         },
         BuscarCompras(){
             let Me = this;
-            let Url = '/clientes/compras' + '?id_terc='+this.IdCliente;
+            let Url = '/clientes/compras' + '?id_terc='+this.IdTercero;
             axios.get( Url )
               .then( response =>{
                   Me.ProductosComprados = response.data;
-              });
-              //.catch( this.ErrorOnFail );
+              })
+              .catch( this.ErrorOnFail );
           },
         }
   };

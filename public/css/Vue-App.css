@@ -10,10 +10,7 @@
     border-radius: 0.21rem;
 }
 
-tr {
-    vertical-align: middle !important;
-    height: 30px !important;
-}
+
 .card {
     margin-bottom: 1.5rem !important;
 }
@@ -42,10 +39,40 @@ label {
  form .form-group {
     margin-bottom: 10px !important;
 }
+/*
+-----------------------------
+COLORES
+-----------------------------
+*/
+.negro{
+   color: #23282C;
+}
+.rojo{
+  color: red;
+}
 
+.alerta {
+   background-color: #FF4961;
+   color: white;
+}
+/*
+-----------------------------
+TABLAS
+-----------------------------
+*/
 th {
   text-align: center;
+  padding : 0.5px 0.5px !important;
+  vertical-align: middle !important;
+  color: #23282C;
 }
+tr {
+    vertical-align: middle !important;
+    height: 30px !important;
+}
+
+
+
  td {
     padding: 0.2rem 0.4rem !important;
     vertical-align: middle !important;
@@ -95,7 +122,7 @@ ol li, ul li, dl li {
 
  .link-active  {
    font-weight: bold;
-   color: yellow !important;
+   color: #fcf4ab !important;
 }
 
 .my-vdatetime{

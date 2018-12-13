@@ -15,17 +15,18 @@ class TercerosController extends Controller {
      // $Cliente = Terceros:.whereHas('factura', function($factura)){
      //       aqui el código
      // }->find($id_cliente)
-    //->select('nro_identif','id_terc','nom_sys','nom_suc', DB::raw('CONCAT(nro_identif, " " , nom_sys) as status'))
+    //->select('nro_identif','id_terc','nom_full','nom_suc', DB::raw('CONCAT(nro_identif, " " , nom_full) as status'))
 
       return 'Ok';
   }
 
+
     public function ClientesBusqueda(Request $FormData ){
           $BuscarDato =  $FormData->filtro;
           $Clientes = Terceros::ClientesActivos()
-                      ->NomSysSucNitNomCcial( $BuscarDato )
-                      ->select('nro_identif','id_terc','nom_sys','nom_suc')
-                      ->orderBy('nom_sys')->get();
+                      ->NomFullSucNitNomCcial( $BuscarDato )
+                      ->select('nro_identif','id_terc','nom_full','nom_suc')
+                      ->orderBy('nom_full')->get();
         return  $Clientes;
     }
 
