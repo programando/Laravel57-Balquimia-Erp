@@ -9,19 +9,7 @@ use DB;
 
 class TercerosController extends Controller {
 
-  public function ClientesFacturas(){
-      //$Cliente = Terceros::with('Notas')->with('Contactos')->where('id_terc','4167')->get();
-      //$Cliente = Terceros::with('Facturas.Detalle.Productos')->where('id_terc','4167')->get();
-     // $Cliente = Terceros:.whereHas('factura', function($factura)){
-     //       aqui el código
-     // }->find($id_cliente)
-    //->select('nro_identif','id_terc','nom_full','nom_suc', DB::raw('CONCAT(nro_identif, " " , nom_full) as status'))
-
-      return 'Ok';
-  }
-
-
-    public function ClientesBusqueda(Request $FormData ){
+   public function ClientesBusqueda(Request $FormData ){
           $BuscarDato =  $FormData->filtro;
           $Clientes = Terceros::ClientesActivos()
                       ->NomFullSucNitNomCcial( $BuscarDato )
@@ -44,7 +32,7 @@ class TercerosController extends Controller {
         $id_terc = $FormData->id_terc;
         $Ventas  = DB::select(' call clientes_productos_comprados (?)', array($id_terc));
         $Ventas  = collect($Ventas);
-         return $Ventas;
+        return $Ventas;
     }
 
     public function NotasVenta ( Request $FormData ){
@@ -67,7 +55,6 @@ class TercerosController extends Controller {
         $Contactos = DB::select(' call terceros_conctactos_x_id_terc (?)', array($id_terc));
         $Contactos = collect($Contactos);
         return $Contactos;
-
     }
 
 
