@@ -23,7 +23,7 @@ class Tercero extends Eloquent
     'auto_rete'         => 'bool',            'gran_cbuye'        => 'bool',            'id_terc_vend_ppal' => 'int',
     'id_terc_vend_secd' => 'int',             'excento_iva'       => 'bool',            'rte_fte'           => 'bool',
     'rte_iva'           => 'bool',            'rte_ica'           => 'bool',            'rte_cree'          => 'bool',
-    'terc_mnv'          => 'bool',            'id_terc_padre'     => 'int',             'proveedor'         => 'bool',
+    'terc_web'          => 'bool',            'id_terc_padre'     => 'int',             'proveedor'         => 'bool',
     'transpdor'         => 'bool',            'prov_eps'          => 'bool',            'prov_arp'          => 'bool',
     'prov_afp'          => 'bool',            'prov_csant'        => 'bool',            'prov_caja'         => 'bool',
     'empleado'          => 'bool',            'id_cargo'          => 'int',             'liq_nomi'          => 'bool',
@@ -43,7 +43,7 @@ class Tercero extends Eloquent
 		                     'id_mcipio',   'nro_tel',    'nro_cel',    'cliente',    'id_zn_vta',  'id_linea_cli',   'id_sub_linea_cli',
 		                     'fcha_ing',    'plazo_fact',   'cupo', 'fcha_cupo',  'dia_max_fact', 'tp_persona', 'auto_rete',  'gran_cbuye',
 		                      'regimen',  'id_terc_vend_ppal',  'id_terc_vend_secd',  'cod_ciiu', 'actv_ica', 'excento_iva',  'rte_fte',
-		                      'rte_iva',    'rte_ica',  'rte_cree',   'terc_mnv',   'terc_mnv_cod',   'id_terc_padre',    'proveedor',
+		                      'rte_iva',    'rte_ica',  'rte_cree',   'terc_web',   'terc_web_cod',   'id_terc_padre',    'proveedor',
 		                      'transpdor',  'prov_eps',   'prov_arp',   'prov_afp',   'prov_csant',   'prov_caja',  'empleado',
 		                      'id_cargo',   'liq_nomi',   'usuario',    'vend',     'vend_free',      'vend_cod',   'vend_listados',
 		                      'vend_nom_fact',  'vend_id_linea',    'transp_prd',   'fcha_nace',      'vr_sueldo',    'vr_aux_alim',
@@ -131,7 +131,7 @@ class Tercero extends Eloquent
         public function scopeClientesActivos($query){
             return $query->Where('cliente','1')
                   ->Where('inactivo','0')
-                  ->Where('terc_mnv', '0');
+                  ->Where('terc_web', '0');
         }
 
         public function scopeNomFullSucNitNomCcial ( $query, $Filtro){

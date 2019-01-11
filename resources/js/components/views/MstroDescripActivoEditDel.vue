@@ -54,6 +54,7 @@
                       </tr>
                     </tbody>
                   </table>
+                  
                    <pagination-links :Pagination="Pagination"> </pagination-links>
                 </div>
               </div>

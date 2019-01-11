@@ -28452,6 +28452,8 @@ __webpack_require__(138);
 var Moment = __webpack_require__(0);
 var Numeral = __webpack_require__(160);
 
+Moment.locale("es");
+
 
 
 

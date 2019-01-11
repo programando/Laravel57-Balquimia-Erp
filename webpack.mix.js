@@ -4,12 +4,12 @@ const mix = require('laravel-mix');
         ], 'public/js/Vue-App.js' );
 
   mix.scripts([
-      'resources/js/vendors/js/toastr.min.js',
+      'resources/vendors/js/toastr.min.js',
     ], 'public/js/app-custom.js'    ) ;// Archivo de salida JS
 
    mix.styles ([
         'resources/css/app.css',
-        'resources/js/vendors/css/toastr.min.css',
+        'resources/vendors/css/toastr.min.css',
        ], 'public/css/Vue-App.css') ;     // Archivo de salida CSS
 
     mix.browserSync({
@@ -19,8 +19,3 @@ const mix = require('laravel-mix');
     });
     mix.disableNotifications();
 
-   /*mix.scripts([
-      'resources/assets/js/vendors/toastr.js',
-    ], 'public/js/app.js'    ) ;// Archivo de salida JS
-
-    */

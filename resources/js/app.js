@@ -9,6 +9,9 @@ require('./files/bootstrap');
 var Moment = require('moment');
 var Numeral = require('numeral');
 
+Moment.locale("es");
+
+
 import Vue              from 'vue';
 import router           from './files/routes';
 import {store}          from './files/store'

@@ -58,7 +58,7 @@
        mixins: [FormValidation],
        methods: {
           Listar(){
-            let Me = this
+            let Me = this;
             axios.get(`/cargos?page=${this.$route.query.page || 1}`)
             .then( response =>{
                Me.DatosTabla =  response.data.data ;

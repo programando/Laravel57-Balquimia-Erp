@@ -28,11 +28,17 @@ class LoginController extends Controller
     }
 
     private function FraseDelDia(){
-          $Frases = DB::select(' call frases_qry_dia() ');
-          $Frase  = $Frases[0]->nom_frase;
-          $Autor  = $Frases[0]->autor;
-          $Datos  = array ( 'Frase' => $Frase,  'Autor'  => $Autor  );
-          return $Datos;
+
+          $Frases = DB::select(' call frases_seleccionar() ');
+          if   ( !$Frases ){
+              $Frase = 'El archivo de frases se encuentra vacío.';
+              $Autor = '';
+            }else{
+              $Frase  = $Frases[0]->nom_frase;
+              $Autor  = $Frases[0]->autor;
+            }
+         $Datos  = array ( 'Frase' => $Frase,  'Autor'  => $Autor  );
+         return $Datos;
     }
 //
   public function PostLogin(LoginRequest $FormData){
