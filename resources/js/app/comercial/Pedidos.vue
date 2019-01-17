@@ -77,11 +77,11 @@
 
                 <div role="tabpanel" class="tab-pane active" id="ComprasCliente" aria-expanded="true" aria-labelledby="base-tab41">
                       <!-- Componete para mostrar las últimas compras de un cliente-->
-                    <ProductosComprados :IdTercero="id_terc"></ProductosComprados>
+                    <ProductosComprados :IdTercero="id_terc" @AgregarProductoPedido="AgregarProductoPedido" ></ProductosComprados>
                 </div>
 
                 <div class="tab-pane" id="PedidoGenerado" aria-labelledby="base-tab42">
-
+                        <PedidoNuevo :NuevoPedido="NuevoPedido" :id_terc="id_terc" :PedPcjeIva = 'PedPcjeIva'>  </PedidoNuevo>
                 </div>
 
                 <div class="tab-pane" id="EstadoCuenta" aria-labelledby="base-tab42">
@@ -118,12 +118,14 @@
 <script>
   import ProductosComprados  from '../../components/terceros/productos_comprados';
   import ClientesBuscar      from '../../components/modals/TercerosClientesBuscar';
-  import Contactos           from '../../components/terceros/contactos'
-  import NotasCartera        from '../../components/terceros/notas_cartera'
-  import NotasVenta          from '../../components/terceros/notas_ventas'
-  import CarteraCliente      from '../../components/terceros/cliente_cartera'
+  import Contactos           from '../../components/terceros/contactos';
+  import NotasCartera        from '../../components/terceros/notas_cartera';
+  import NotasVenta          from '../../components/terceros/notas_ventas';
+  import CarteraCliente      from '../../components/terceros/cliente_cartera';
+  import PedidoNuevo         from '../../components/comercial/pedido_nuevo';
 
-  import { Datetime } from 'vue-datetime';
+  import { Datetime }        from 'vue-datetime';
+  import { MSG }             from '../../files/messages.js';
 
 // You need a specific loader for CSS files
 import 'vue-datetime/dist/vue-datetime.css'
@@ -134,9 +136,11 @@ import 'vue-datetime/dist/vue-datetime.css'
                  NombreCliente : '',
                  id_terc       : 0,
                  nom_vend_ppal :'',
+                 NuevoPedido   : [],
+                 PedPcjeIva    : 0.00,
             }
         },
-     components: { datetime: Datetime, ProductosComprados, ClientesBuscar, Contactos, NotasCartera, NotasVenta, CarteraCliente
+     components: { datetime: Datetime, ProductosComprados, ClientesBuscar, Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo
         },
      methods: {
           SeleccionarTercero( DatosCliente ){
@@ -156,6 +160,44 @@ import 'vue-datetime/dist/vue-datetime.css'
                     Me.nom_suc       = DatosCliente.municipio.nom_mcpio.trim() + ' ' + DatosCliente.nom_suc.trim() ;
                 })
           },
+          ProductoExisteEnPedido( id_prd ){
+            var Existe = false;
+            this.NuevoPedido.forEach((item) => {
+                 if ( item.id_prd == id_prd ){
+                   Existe = true;
+                 }
+             });
+            if ( Existe == true ){
+                 this.$swal(MSG.Reg_Doble_Tit, MSG.Ped_Prd_Doble, 'info')
+                }
+             return Existe;
+          },
+
+          AgregarProductoPedido( data ){
+              if (this.ProductoExisteEnPedido( data.id_prd ) == true ){
+                return 'ok';
+              }
+              this.PedPcjeIva = data.pcjeiva;
+
+              var newItem = {
+                  id_prd          : data.id_prd,
+                  nom_prd         : data.nom_prd,
+                  cant            : JSON.parse(data.cant).toFixed(0),
+                  vr_precio_lista : data.vr_precio_lista_hoy,
+                  descrip         : data.descrip,
+                  id_fact_dt      : data.id_fact_dt,
+                  vr_flete        : 0,
+                  vr_fnacion      : 0,
+                  vr_precio_adic  : 0,
+                  vr_unit_real    : 0,
+                  vr_dscto        : 0,
+                  pcje_iva        : 0,
+                  vr_iva          : 0,
+              };
+              this.NuevoPedido.push( newItem );
+              toastr.success( MSG.Ped_Prd_Add);
+          },
+
         NuevaBusqueda() {
             this.id_terc       = 0;
         },

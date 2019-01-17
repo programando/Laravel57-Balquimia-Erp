@@ -13,7 +13,6 @@
               <th> $ Base</th>
               <th> Flete</th>
               <th> Mayor Vr.</th>
-              <th> Dscto</th>
               <th> Vr.Unit.</th>
               <th> </th>
             </tr>
@@ -28,7 +27,7 @@
               <td class="text-right"> {{ Producto.vr_precio_lista | NumeroEntero  }} </td>
               <td class="text-right"> {{ Producto.vr_flete        | NumeroEntero     }} </td>
               <td class="text-right"> {{ Producto.vr_precio_adic  | NumeroEntero   }} </td>
-              <td class="text-right"> {{ Producto.vr_dscto        | NumeroEntero   }} </td>
+
               <td class="text-right"> {{ Producto.vr_unit_real    | NumeroEntero  }} </td>
               <td>
                 <button   title="Agregar Producto"
@@ -68,8 +67,8 @@ import FormValidation from '../../mixins/FormValidation';
             }
         },
     methods: {
-        AgregarProductoPedido(){
-
+        AgregarProductoPedido( data ){
+            this.$emit('AgregarProductoPedido', data);
         },
         BuscarCompras(){
             let Me = this;

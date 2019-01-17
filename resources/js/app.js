@@ -15,6 +15,7 @@ Moment.locale("es");
 import Vue              from 'vue';
 import router           from './files/routes';
 import {store}          from './files/store'
+import VueSweetalert2   from 'vue-sweetalert2';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,11 +32,13 @@ Vue.component('new-record'                      ,require( './components/modals/N
 Vue.filter('FormatoFecha', (value) => {  return Moment(value).format('DD-MMM-YYYY');     });
 Vue.filter('NumeroEntero', (value) => {  return Numeral(value).format('0,0');             });
 
+Vue.use(VueSweetalert2);
+
+
 const VueApp = new Vue({
     el: '#VueApp',
     router,
     store,
-
 });
 
 /*
