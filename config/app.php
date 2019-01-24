@@ -218,6 +218,8 @@ return [
         'Images'  => App\Helpers\Images::class,
         'Folders' => App\Helpers\Folders::class,
         'Strings' => App\Helpers\Strings::class,
+        'Fechas'  => App\Helpers\Fechas::class,
+
 
     ],
 

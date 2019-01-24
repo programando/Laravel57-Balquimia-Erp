@@ -3,9 +3,8 @@
     <button type="button" class="btn btn-sm btn-success" style="margin: 2px;">
         <i class="icon-list"></i> Agregar Productos
     </button>
-    <button v-if="NuevoPedido.length > 0" type="button"
-      class="btn btn-sm btn-primary pull-right" style="margin: 2px;"
-      @click="GrabarPedido()">
+
+    <button v-if="NuevoPedido.length > 0" type="button"       class="btn btn-sm btn-primary pull-right" style="margin: 2px;"    @click="GrabarPedido()">
       <i class="icon-basket" ></i> Grabar Pedido
     </button>
 
@@ -142,7 +141,7 @@
 
     methods:{
           GrabarPedido(){
-
+                  this.$emit('GrabarPedido','Datos del pedido');
           },
             ValidarDatos(){
             if ( this.id_terc == 0 ){

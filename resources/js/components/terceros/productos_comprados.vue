@@ -51,7 +51,7 @@
 
 
 <script>
-import FormValidation from '../../mixins/FormValidation';
+
   export default{
     props : ['IdTercero'],
      data() {
@@ -60,7 +60,7 @@ import FormValidation from '../../mixins/FormValidation';
             ErrorsController  : {},
         }
       },
-      mixins: [FormValidation],
+
       watch: {
             IdTercero : function(){
               this.ProductosComprados = this.BuscarCompras() ? this.IdTercero > 0 : [];

@@ -36,7 +36,7 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
     Route::get('/terceros/contactos'                  , 'TercerosController@Contactos'                             );
 
     Route::get('/terceros/clientes/cartera'           , 'CarteraController@ClientesFacturasPdtePago'               );
-   // Route::post('/pedido/grabar'                      ,'PedidosController@Grabar'            );
+    Route::post('/pedidos/grabar'                      ,'PedidosController@Grabar'            );
    // Route::get('/pedido/dias/financiacion'                      ,'PedidosController@DiasFinanciacion'            );
 });
 //Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');

@@ -17,6 +17,7 @@ import router           from './files/routes';
 import {store}          from './files/store'
 import VueSweetalert2   from 'vue-sweetalert2';
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -35,6 +36,7 @@ Vue.filter('NumeroEntero', (value) => {  return Numeral(value).format('0,0');   
 Vue.use(VueSweetalert2);
 
 
+
 const VueApp = new Vue({
     el: '#VueApp',
     router,
@@ -49,4 +51,6 @@ const VueApp = new Vue({
                    Componentes hechos con vue       https://madewithvuejs.com
  vue-datetime       Manejo de fechas y horas        https://github.com/mariomka/vue-datetime?ref=madewithvuejs.com
                     Demo                            https://mariomka.github.io/vue-datetime/
+
+
 */

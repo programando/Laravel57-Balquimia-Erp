@@ -9,13 +9,19 @@
       <div class="card-content ">
         <div class="card-body">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" :class = "{ 'invalid-data': ErrorHas('id_terc')}">
                   <label>Cliente</label>
                   <div class="form-group form-inline">
                     <button class="btn btn-primary btn-xs" data-target="#ModalClientesBuscar"  data-toggle="modal"
                       @click="NuevaBusqueda">
-                      <i class="la la-search"></i></button>
+                      <i class="la la-search"></i>
+                    </button>
                     &nbsp; <input   class="form-control border-primary campo-form" v-model="NombreCliente" placeholder="Nombre del cliente" disabled="disabled">
+
+                  <div class="invalid-data" v-if="ErrorHas('id_terc')">
+                    <i class="ft-x-square"></i>&nbsp;<span class="invalid-data" v-text="ErrorGet('id_terc')">  </span>
+                  </div>
+
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -28,22 +34,29 @@
                   <label>Vendedor</label>
                   <input   class="form-control border-primary campo-form" v-model="nom_vend_ppal" placeholder="Vendedor" disabled="disabled">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" :class = "{ 'invalid-data': ErrorHas('fcha_dspcho')}">
                   <label>Fecha Despacho</label>
-                  <datetime class="theme-orange "
+                  <datetime class="theme-orange { 'invalid-data': ErrorHas('fcha_dspcho')}"
                   input-class="my-vdatetime"
-                  :phrases="{ok: 'Seleccionar', cancel: 'Salir'}" ></datetime>
+                  value-zone ='America/bogota'
+                  :phrases="{ok: 'Seleccionar', cancel: 'Salir'}" v-model="fcha_dspcho" @focus="fehcDspchoFocus()">
+                  </datetime>
+                  <div class="invalid-data" v-if="ErrorHas('fcha_dspcho')">
+                    <i class="ft-x-square"></i>&nbsp;<span class="invalid-data" v-text="ErrorGet('fcha_dspcho')">  </span>
+                  </div>
                 </div>
               </div>   <!-- /Row 1-->
 
               <div class="row">
                 <div class="col-sm-3">
                   <label>Orden Compra</label>
-                  <input   class="form-control border-primary campo-form" placeholder="Número orden compra"  >
+                  <input type="text"  class="form-control border-primary campo-form NroOrdenCompra" v-model="num_ord_cpra"
+                   placeholder="Número orden compra" > </input>
+
                 </div>
                 <div class="col-sm-9">
                   <label>Observaciones del pedido</label>
-                  <input   class="form-control border-primary campo-form" placeholder="Observaciones del pedido"  >
+                  <input   class="form-control border-primary campo-form" placeholder="Observaciones del pedido" v-model="observ_ped"  >
                 </div>
               </div>
 
@@ -81,7 +94,7 @@
                 </div>
 
                 <div class="tab-pane" id="PedidoGenerado" aria-labelledby="base-tab42">
-                        <PedidoNuevo :NuevoPedido="NuevoPedido" :id_terc="id_terc" :PedPcjeIva = 'PedPcjeIva'>  </PedidoNuevo>
+                        <PedidoNuevo :NuevoPedido="NuevoPedido" :id_terc="id_terc" :PedPcjeIva = 'PedPcjeIva' @GrabarPedido="GrabarPedido">  </PedidoNuevo>
                 </div>
 
                 <div class="tab-pane" id="EstadoCuenta" aria-labelledby="base-tab42">
@@ -123,26 +136,54 @@
   import NotasVenta          from '../../components/terceros/notas_ventas';
   import CarteraCliente      from '../../components/terceros/cliente_cartera';
   import PedidoNuevo         from '../../components/comercial/pedido_nuevo';
+  import Cleave              from 'vue-cleave'
 
   import { Datetime }        from 'vue-datetime';
   import { MSG }             from '../../files/messages.js';
+  import FormValidation      from '../../mixins/FormValidation.js';
+  import Message             from '../../mixins/ToastrMessages.js';
 
 // You need a specific loader for CSS files
 import 'vue-datetime/dist/vue-datetime.css'
     export default {
         data() {
             return {
-                nom_suc : '',
+                 ErrorsController  : {},
+                 nom_suc : '',
                  NombreCliente : '',
                  id_terc       : 0,
                  nom_vend_ppal :'',
                  NuevoPedido   : [],
                  PedPcjeIva    : 0.00,
+                 num_ord_cpra  : '',
+                 fcha_dspcho   : '',
+                 observ_ped    : '',
+
             }
         },
-     components: { datetime: Datetime, ProductosComprados, ClientesBuscar, Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo
+     components: { datetime: Datetime, ProductosComprados, ClientesBuscar, Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave
         },
+      mixins : [ FormValidation, Message ],
+
+     computed: {
+
+      },
+
      methods: {
+           fehcDspchoFocus(){
+                delete this.ErrorsController['fcha_dspcho'] ;
+            },
+        GrabarPedido ( data ) {
+          let Me = this;
+          let Pedido = {'id_terc' : Me.id_terc, 'fcha_dspcho': Me.fcha_dspcho,'num_ord_cpra': Me.num_ord_cpra, 'observ_ped':Me.observ_ped,
+                        'detalle': Me.NuevoPedido };
+          axios.post('/pedidos/grabar', Pedido)
+          .then ( response => {
+            console.log( response.data);
+          })
+            .catch( this.ErrorOnFail );
+        },
+
           SeleccionarTercero( DatosCliente ){
               this.id_terc       = DatosCliente.id_terc;
               this.nom_suc       = DatosCliente.nom_suc;
@@ -178,7 +219,6 @@ import 'vue-datetime/dist/vue-datetime.css'
                 return 'ok';
               }
               this.PedPcjeIva = data.pcjeiva;
-
               var newItem = {
                   id_prd          : data.id_prd,
                   nom_prd         : data.nom_prd,
@@ -193,6 +233,7 @@ import 'vue-datetime/dist/vue-datetime.css'
                   vr_dscto        : 0,
                   pcje_iva        : 0,
                   vr_iva          : 0,
+                  fcha_ped        : '',
               };
               this.NuevoPedido.push( newItem );
               toastr.success( MSG.Ped_Prd_Add);
@@ -200,8 +241,12 @@ import 'vue-datetime/dist/vue-datetime.css'
 
         NuevaBusqueda() {
             this.id_terc       = 0;
+            delete this.ErrorsController['id_terc'] ;
+            this.Success("Pedidos",'Pedido generado con éxito.');
         },
+
      }
    }
+
 </script>
 

@@ -85,9 +85,10 @@
         methods:{
               BuscarTercero(){
                 let Me = this;
-                if ( Me.TextoBsqda.length<3){
+                /*if ( Me.TextoBsqda.length<3){
                   return ;
-                }
+                }*/
+                Me.TextoBsqda = 'HOLC';
                 let Url  = this.UrlBusqueda + '?filtro='+Me.TextoBsqda;
                 axios.get(Url)
                 .then( response=>{

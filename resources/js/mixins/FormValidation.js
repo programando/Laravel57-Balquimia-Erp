@@ -17,9 +17,9 @@ module.exports = {
             ErrorOnFail( error ){
                  this.ErrorsController = error.response.data.errors;
             },
-          ErrorclearAll () {
-           this.ErrorsController      = {};
-           }
+            ErrorclearAll () {
+             this.ErrorsController      = {};
+             }
     }
 };
 

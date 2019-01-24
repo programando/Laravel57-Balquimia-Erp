@@ -140,6 +140,7 @@ return [
         'title'                 => 'título',
         'username'              => 'usuario',
         'year'                  => 'año',
+        'id_terc'               => ' ',
 
     ],
 ];
