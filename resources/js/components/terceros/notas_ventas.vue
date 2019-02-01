@@ -35,6 +35,7 @@
           }
       },
       minxins : [FormValidation ],
+
       watch: {
             IdTercero : function (){
                 this.NotasVentas = this.BuscarNotasVenta() ? this.IdTercero > 0 : [];

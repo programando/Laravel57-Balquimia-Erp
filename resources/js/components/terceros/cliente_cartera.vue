@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div v-if="Facturas.length">
+      <div v-if="FacturasCartera.length">
         <strong>
           <div v-if="TotalVencido" class="text-right negro p-1" >TOTAL CARTERA VENCIDA  : {{ TotalVencido | NumeroEntero }}</div>
         </strong>
@@ -16,7 +16,7 @@
               </tr>
            </thead>
             <tbody>
-            <tr v-for="Factura in Facturas" :key="Factura.id_reg">
+            <tr v-for="Factura in FacturasCartera" :key="Factura.id_reg">
               <td :class="{'alerta' : AplicaAlerta(Factura)  }">{{ Factura.fcha_fact | FormatoFecha }}</td>
               <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }" >{{ Factura.num_fact  }}</td>
               <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }">{{ Factura.vr_tot_fact | NumeroEntero }}</td>
@@ -41,7 +41,7 @@
       props :['IdTercero'],
       data(){
           return {
-              Facturas : [],
+              FacturasCartera : [],
               ErrorsController      : {},
               VrAcumuladoVencido    : 0,
               ExisteCarteraVencida  : false,
@@ -50,7 +50,7 @@
       minxins : [FormValidation ],
       watch: {
             IdTercero : function (){
-                this.Facturas = this.BuscarFacturasPorPago() ? this.IdTercero > 0 : [];
+                this.FacturasCartera = this.BuscarFacturasPorPago() ? this.IdTercero > 0 : [];
             },
       },
 
@@ -59,7 +59,7 @@
         TotalVencido (){
             var $AcumuladoVencido     = 0.0;
             this.ExisteCarteraVencida = false;
-            this.Facturas.forEach(( item ) =>{
+            this.FacturasCartera.forEach(( item ) =>{
             if ( item.dias_a_hoy > item.plazo_fact ){
                   $AcumuladoVencido += parseFloat( item.vr_tot_fact );
               }
@@ -80,14 +80,14 @@
             let Url = '/terceros/clientes/cartera' + '?id_terc='+this.IdTercero;
             axios.get( Url )
               .then( response =>{
-                  this.Facturas = response.data;
+                  this.FacturasCartera = response.data;
               })
               .catch( this.ErrorOnFail );
           },
 
           MensajeCarteraVencida(){
                 this.ExisteCarteraVencida = false;
-                this.Facturas.forEach(( item ) =>{
+                this.FacturasCartera.forEach(( item ) =>{
                 if ( item.vr_acum_vencido > 0 ){
                      this.ExisteCarteraVencida = true;
                   }

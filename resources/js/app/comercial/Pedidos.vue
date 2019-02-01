@@ -158,10 +158,10 @@ import 'vue-datetime/dist/vue-datetime.css'
                  num_ord_cpra  : '',
                  fcha_dspcho   : '',
                  observ_ped    : '',
-
             }
         },
-     components: { datetime: Datetime, ProductosComprados, ClientesBuscar, Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave
+          components: { datetime: Datetime, ProductosComprados, ClientesBuscar,
+                        Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave
         },
       mixins : [ FormValidation, Message ],
 
@@ -170,7 +170,7 @@ import 'vue-datetime/dist/vue-datetime.css'
       },
 
      methods: {
-           fehcDspchoFocus(){
+        fehcDspchoFocus(){
                 delete this.ErrorsController['fcha_dspcho'] ;
             },
         GrabarPedido ( data ) {
@@ -179,9 +179,21 @@ import 'vue-datetime/dist/vue-datetime.css'
                         'detalle': Me.NuevoPedido };
           axios.post('/pedidos/grabar', Pedido)
           .then ( response => {
-            console.log( response.data);
+            this.Success('Pedidos', 'Pedido grabado con éxito !!!');
+            this.RegistrarNuevoPedido();
           })
             .catch( this.ErrorOnFail );
+        },
+        RegistrarNuevoPedido() {
+           this.fcha_dspcho   = '';
+           this.id_terc       = 0;
+           this.nom_suc       = '';
+           this.nom_vend_ppal ='';
+           this.NombreCliente = '';
+           this.NuevoPedido   = [];
+           this.num_ord_cpra  = '';
+           this.observ_ped    = '';
+           this.PedPcjeIva    = 0.00;
         },
 
           SeleccionarTercero( DatosCliente ){
@@ -242,7 +254,6 @@ import 'vue-datetime/dist/vue-datetime.css'
         NuevaBusqueda() {
             this.id_terc       = 0;
             delete this.ErrorsController['id_terc'] ;
-            this.Success("Pedidos",'Pedido generado con éxito.');
         },
 
      }
