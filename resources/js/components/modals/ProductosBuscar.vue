@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade text-left" id="ModalClientesBuscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4"
+  <div class="modal fade text-left" id="ModalProductosBusqueda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel4"
           aria-hidden="true" data-backdrop="static" data-keyboard="false" >
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content border-success">
@@ -17,14 +17,14 @@
               <div class="col-sm-12">
                 <label>
                   <strong>
-                    <slot name='SearchTitle'> Puede realizar la búsqueda por Nit, nombre o sucursal... </slot>
+                    <slot name='SearchTitle'> Puede realizar la búsqueda por nombre producto... </slot>
                   </strong>
                  </label>
 
                   <div class="form-group">
                     <input   class="form-control border-primary campo-form"
-                      @change     ="BuscarTercero()"
-                      @input      ="BuscarTercero()"
+                      @change     ="BuscarProducto()"
+                      @input      ="BuscarProducto()"
                       autofocus   = "autofocus"
                       placeholder="Digite para iniciar la búsqueda..."
                       type="text"
@@ -33,25 +33,23 @@
 
               </div>  <!-- /Col - Campo búsqueda v-if="ClientesEncontrados.length"-->
 
-              <div class="col-sm-12" v-if="TerceroEncontrado.length">
+              <div class="col-sm-12" v-if="ProductoEncontrado.length">
                 <div class="table-responsive">
                   <table class="table table-bordered table-striped table-hover table-sm" >
                     <thead>
                       <tr>
-                          <th> Nit</th>
-                          <th> Nombre/Razón Soc.</th>
-                          <th> Sucursal</th>
+                          <th> Producto</th>
+                          <th> Presentación</th>
                           <th></th>
                       </tr>
                     </thead>
                         <tbody>
-                        <tr v-for="Tercero in TerceroEncontrado" :key="Tercero.id_terc">
-                            <td v-text="Tercero.nro_identif"></td>
-                            <td v-text="Tercero.nom_full"></td>
-                            <td v-text="Tercero.nom_suc"> </td>
+                        <tr v-for="Producto in ProductoEncontrado" :key="Producto.id_terc">
+                            <td v-text="Producto.nom_prd"></td>
+                            <td v-text="Producto.nom_present"> </td>
                             <td class="text-center">
                              <button type="button" class="btn btn-success btn-xs"
-                             title="Seleccionar cliente" @click="SeleccionarTercero(Tercero)"><i class="la la-arrow-left" ></i>
+                             title="Seleccionar cliente" @click="SeleccionarProducto(Producto)"><i class="la la-arrow-left" ></i>
                              </button>
                            </td>
                          </tr>
@@ -79,28 +77,28 @@
         data(){
             return {
                   TextoBsqda : '',
-                  TerceroEncontrado :[],
+                  ProductoEncontrado :[],
             }
         },
         methods:{
-              BuscarTercero(){
+              BuscarProducto(){
                 let Me = this;
-                /*if ( Me.TextoBsqda.length<3){
+                if ( Me.TextoBsqda.length<3){
                   return ;
-                }*/
-                Me.TextoBsqda = 'HOLC';
+                }
                 let Url  = this.UrlBusqueda + '?filtro='+Me.TextoBsqda;
                 axios.get(Url)
                 .then( response=>{
-                   this.TerceroEncontrado = response.data;
+                   this.ProductoEncontrado = response.data;
+
                 });
               },
 
-            SeleccionarTercero( Tercero ){
+            SeleccionarProducto( Producto ){
                 this.TextoBsqda         = '',
-                this.TerceroEncontrado  = [];
-                $('#ModalClientesBuscar').modal('hide');
-                this.$emit('SeleccionarTercero', Tercero);
+                this.ProductoEncontrado  = [];
+                $('#ModalProductosBusqueda').modal('hide');
+                this.$emit('SeleccionarProducto', Producto);
             },
           }
     }

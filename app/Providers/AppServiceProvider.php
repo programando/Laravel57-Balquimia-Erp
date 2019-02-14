@@ -12,8 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot()  {
         view::share('APP_NAME',         config('_app.APP_NAME'));
         view::share('Browser_Title',    config('_app.APP_NAME'));
         view::share('Page_Description', config('_app.APP_DESCRIPTION'));

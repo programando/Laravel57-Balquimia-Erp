@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Helpers\Fechas;
+use App\Helpers\Users;
 use App\Models\Pedido as Pedidos;
 use App\Models\PedidosDt ;
+use App\Rules\IdTerceroMayorQueCero;
 
-use App\Helpers\Users;
-use App\Helpers\Fechas;
 use  Carbon\Carbon;
 use DB;
+
 class PedidosController extends Controller
 {
 
     public function Grabar ( Request $FormData) {
 
         $this->validate($FormData ,
-                ['id_terc' => 'required|min:1', 'fcha_dspcho'=>'required']);
-
+                [ 'id_terc'    => ['required', new IdTerceroMayorQueCero],
+                  'fcha_dspcho'=>'required'
+                ]);
 
         try{
           DB::beginTransaction();
@@ -27,7 +31,7 @@ class PedidosController extends Controller
             $Pedido->id_terc_usu = Users::User()->id_terc;
             $Pedido->fcha_ped    = Carbon::now();
             $Pedido->id_stdo     = 0;
-            $Pedido->num_ord_cpra = $FormData->num_ord_cpra;
+            $Pedido->num_ord_cpra = $FormData->num_ord_cpra ? !empty($FormData->num_ord_cpra) : '';
             $Pedido->save();
             $DetallePedido =  $FormData->get('detalle');
 

@@ -124,57 +124,66 @@
          <template slot='ModalTitle'>Búsqueda de Clientes</template>
       </ClientesBuscar>
 
+
+        <!-- Modal para buscar Productos Presentaciones Activos-->
+      <ProductosBuscar @SeleccionarProducto="AgregarProductoPedido" UrlBusqueda='/productos/activos/'>
+         <template slot='SearchTitle'>Puede realizar la búsqueda por: Nombre de producto</template>
+         <template slot='ModalTitle'>Búsqueda de Productos</template>
+      </ProductosBuscar>
+
   </div>
 
 </template>
 
 <script>
-  import ProductosComprados  from '../../components/terceros/productos_comprados';
-  import ClientesBuscar      from '../../components/modals/TercerosClientesBuscar';
-  import Contactos           from '../../components/terceros/contactos';
-  import NotasCartera        from '../../components/terceros/notas_cartera';
-  import NotasVenta          from '../../components/terceros/notas_ventas';
   import CarteraCliente      from '../../components/terceros/cliente_cartera';
-  import PedidoNuevo         from '../../components/comercial/pedido_nuevo';
   import Cleave              from 'vue-cleave'
-
-  import { Datetime }        from 'vue-datetime';
-  import { MSG }             from '../../files/messages.js';
+  import ClientesBuscar      from '../../components/modals/TercerosBuscar';
+  import Contactos           from '../../components/terceros/contactos';
   import FormValidation      from '../../mixins/FormValidation.js';
   import Message             from '../../mixins/ToastrMessages.js';
+  import NotasCartera        from '../../components/terceros/notas_cartera';
+  import NotasVenta          from '../../components/terceros/notas_ventas';
+  import PedidoNuevo         from '../../components/comercial/pedido_nuevo_items';
+  import ProductosBuscar      from '../../components/modals/ProductosBuscar';
+  import ProductosComprados  from '../../components/terceros/productos_comprados';
+  import { Datetime }        from 'vue-datetime';
+  import { MSG }             from '../../files/messages.js';
+  // You need a specific loader for CSS files
+  import 'vue-datetime/dist/vue-datetime.css'
 
-// You need a specific loader for CSS files
-import 'vue-datetime/dist/vue-datetime.css'
+
     export default {
         data() {
             return {
                  ErrorsController  : {},
-                 nom_suc : '',
-                 NombreCliente : '',
-                 id_terc       : 0,
-                 nom_vend_ppal :'',
-                 NuevoPedido   : [],
-                 PedPcjeIva    : 0.00,
-                 num_ord_cpra  : '',
-                 fcha_dspcho   : '',
-                 observ_ped    : '',
+                 nom_suc           : '',
+                 NombreCliente     : '',
+                 id_terc           : 0,
+                 nom_vend_ppal     :'',
+                 NuevoPedido       : [],
+                 PedPcjeIva        : 0.00,
+                 num_ord_cpra      : '',
+                 fcha_dspcho       : '',
+                 observ_ped        : '',
             }
         },
-          components: { datetime: Datetime, ProductosComprados, ClientesBuscar,
+          components: { datetime: Datetime, ProductosComprados, ClientesBuscar,ProductosBuscar,
                         Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave
         },
-      mixins : [ FormValidation, Message ],
+          mixins : [ FormValidation, Message ],
 
-     computed: {
+       computed: {
 
-      },
+        },
 
      methods: {
         fehcDspchoFocus(){
                 delete this.ErrorsController['fcha_dspcho'] ;
             },
+
         GrabarPedido ( data ) {
-          let Me = this;
+           let Me = this;
           let Pedido = {'id_terc' : Me.id_terc, 'fcha_dspcho': Me.fcha_dspcho,'num_ord_cpra': Me.num_ord_cpra, 'observ_ped':Me.observ_ped,
                         'detalle': Me.NuevoPedido };
           axios.post('/pedidos/grabar', Pedido)
@@ -183,7 +192,10 @@ import 'vue-datetime/dist/vue-datetime.css'
             this.RegistrarNuevoPedido();
           })
             .catch( this.ErrorOnFail );
+
         },
+
+
         RegistrarNuevoPedido() {
            this.fcha_dspcho   = '';
            this.id_terc       = 0;
@@ -202,6 +214,8 @@ import 'vue-datetime/dist/vue-datetime.css'
               this.NombreCliente = DatosCliente.nom_full;
               this.BuscarVendedores();
           },
+
+
          BuscarVendedores(){
               let Me  = this;
               let Url = '/clientes/vendedores/'+ '?id_terc='+this.id_terc;
@@ -230,12 +244,12 @@ import 'vue-datetime/dist/vue-datetime.css'
               if (this.ProductoExisteEnPedido( data.id_prd ) == true ){
                 return 'ok';
               }
-              this.PedPcjeIva = data.pcjeiva;
+              this.PedPcjeIva = data.pcje_iva;
               var newItem = {
                   id_prd          : data.id_prd,
                   nom_prd         : data.nom_prd,
                   cant            : JSON.parse(data.cant).toFixed(0),
-                  vr_precio_lista : data.vr_precio_lista_hoy,
+                  vr_precio_lista : data.vr_precio_lista,
                   descrip         : data.descrip,
                   id_fact_dt      : data.id_fact_dt,
                   vr_flete        : 0,
@@ -243,12 +257,14 @@ import 'vue-datetime/dist/vue-datetime.css'
                   vr_precio_adic  : 0,
                   vr_unit_real    : 0,
                   vr_dscto        : 0,
-                  pcje_iva        : 0,
+                  pcje_iva        : this.PedPcjeIva,
                   vr_iva          : 0,
                   fcha_ped        : '',
+                  nom_present     : data.nom_present
               };
               this.NuevoPedido.push( newItem );
               toastr.success( MSG.Ped_Prd_Add);
+              console.log( this.PedPcjeIva );
           },
 
         NuevaBusqueda() {

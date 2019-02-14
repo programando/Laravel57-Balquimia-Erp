@@ -15,6 +15,11 @@ module.exports = {
              toastr.options.progressBar = true;
              toastr.info(Message, Titulo  )
           },
+        Danger      ( Titulo, Message ) {
+             toastr.options.closeButton = true;
+             toastr.options.progressBar = true;
+             toastr.danger(Message, Titulo  )
+          },
 
 
     }

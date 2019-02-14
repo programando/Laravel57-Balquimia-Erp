@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Pedido extends Eloquent
 {
-	protected $primaryKey = 'id_ped';
-	public $timestamps = false;
+  protected $primaryKey = 'id_ped';
+  public $timestamps    = false;
 
 
 	protected $casts = [ 'id_fact'         => 'int',         'id_terc_cli'     => 'int',       'id_terc_usu'     => 'int',       'id_terc_autz'    => 'int',

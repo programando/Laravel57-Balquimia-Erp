@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <button type="button" class="btn btn-sm btn-success" style="margin: 2px;">
+    <button type="button" class="btn btn-sm btn-success" style="margin: 2px;"
+        data-target="#ModalProductosBusqueda"  data-toggle="modal">
         <i class="icon-list"></i> Agregar Productos
     </button>
 
-    <button v-if="NuevoPedido.length > 0" type="button"       class="btn btn-sm btn-primary pull-right" style="margin: 2px;"    @click="GrabarPedido()">
+
+    <button v-if="NuevoPedido.length > 0" type="button"
+      class="btn btn-sm btn-primary pull-right" style="margin: 2px;"    @click="GrabarPedido()">
       <i class="icon-basket" ></i> Grabar Pedido
     </button>
 
@@ -24,7 +27,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(Pedido, index) in NuevoPedido" :key="Pedido.id_fact_dt">
+          <tr v-for="(Pedido, index) in NuevoPedido" :key="Pedido.index">
             <td class="text-center">
               <button type="button" class="btn btn-danger btn-sm"  @click="ProductoBorrar(index)" title="Eliminar producto">
                <i class="icon-trash"></i>
@@ -32,7 +35,7 @@
 
             </td>
             <td v-text="Pedido.nom_prd"> </td>
-            <td> {{ Pedido.descrip  }} </td>
+            <td> {{ Pedido.nom_present  }}   </td>
 
             <td class="text-right ">
               <input class="text-center" type="number" min="1" step="1" v-model="Pedido.cant" style="width: 40px;"
@@ -140,8 +143,8 @@
       },
 
     methods:{
-          GrabarPedido(){
-                  this.$emit('GrabarPedido','Datos del pedido');
+         GrabarPedido(){
+               this.$emit('GrabarPedido','Datos del pedido');
           },
             ValidarDatos(){
             if ( this.id_terc == 0 ){

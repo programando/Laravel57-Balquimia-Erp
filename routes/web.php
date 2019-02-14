@@ -37,7 +37,10 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
 
     Route::get('/terceros/clientes/cartera'           , 'CarteraController@ClientesFacturasPdtePago'               );
     Route::post('/pedidos/grabar'                      ,'PedidosController@Grabar'            );
-   // Route::get('/pedido/dias/financiacion'                      ,'PedidosController@DiasFinanciacion'            );
+
+    Route::get('/productos/activos'                      ,'ProductosController@ProductosPresentacionesActivos'            );
+
+
 });
 //Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
 Route::middleware(['AppPreventBackHistory'])->group( function(){
