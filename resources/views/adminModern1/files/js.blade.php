@@ -16,6 +16,8 @@
 <script src="{{asset('js/core/app.js')}}"></script>
 <script src="{{asset('js/customizer.js')}}"></script>
 <script src="{{asset('js/icheck.min.js')}}"></script>
+
+
 <!-- END MODERN JS-->
 
 

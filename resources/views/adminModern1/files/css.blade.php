@@ -17,6 +17,7 @@
 <link href="{{asset('css/form-validation.css')}}" rel="stylesheet">
 <link href="{{asset('css/custom')}}" rel="stylesheet">
 <link href="{{asset('css/icheck.css')}}" rel="stylesheet">
+
 <!-- END Page Level CSS-->
 
 <!-- BEGIN Custom CSS-->

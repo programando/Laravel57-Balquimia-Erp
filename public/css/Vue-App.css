@@ -71,13 +71,19 @@ tr {
     height: 30px !important;
 }
 
-
-
  td {
     padding: 0.2rem 0.4rem !important;
     vertical-align: middle !important;
     font-size: 11.5px;
 }
+/*  ----------------------------- */
+
+
+.mb-05, .my-05 {
+    margin-bottom: 0.5rem !important;
+}
+
+
 
 blockquote .frase{
   font-size: 12.5px !important;
@@ -143,6 +149,9 @@ ol li, ul li, dl li {
 .theme-orange .vdatetime-popup__actions__button {
   color: #ff9800;
 }
+
+
+
 
 /*
  * Note that this is toastr v2.1.3, the "latest" version in url has no more maintenance,

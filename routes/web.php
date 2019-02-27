@@ -4,7 +4,7 @@
 
 
 
-//Route::get('/test','CarteraController@ClientesFacturasPdtePago' );
+Route::get('/index','FletesController@fletesRedeTrans' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -39,6 +39,11 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
     Route::post('/pedidos/grabar'                      ,'PedidosController@Grabar'            );
 
     Route::get('/productos/activos'                      ,'ProductosController@ProductosPresentacionesActivos'            );
+    Route::get('/municipios/listado'                      ,'MstroMunicipiosController@listadoGeneral'            );
+
+    Route::post('/fletes/calcular'                      ,'FletesController@fletesRedeTrans'            );
+
+
 
 
 });

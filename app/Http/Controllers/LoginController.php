@@ -9,6 +9,7 @@ use Auth;
 use Cache;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Redirect;
 use Session;
@@ -20,12 +21,17 @@ use \App\Models\TercerosUsersToken  as UserToken;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+    public $maxAttempts = 3;
+    public $decayMinutes = 30;
+
     public function ShowLogin(){
           $Datos = $this->FraseDelDia();
           $Frase = $Datos['Frase'];
           $Autor = $Datos['Autor'];
           return view('login.login', compact('Frase','Autor'));
     }
+
 
     private function FraseDelDia(){
 
@@ -42,6 +48,7 @@ class LoginController extends Controller
     }
 //
   public function PostLogin(LoginRequest $FormData){
+
         $email    = $FormData->email;
         $password = $FormData->password;
         $remember = $FormData->remember_me;

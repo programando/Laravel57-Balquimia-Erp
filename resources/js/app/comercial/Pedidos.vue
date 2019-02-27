@@ -12,6 +12,14 @@
                 <div class="col-md-3" :class = "{ 'invalid-data': ErrorHas('id_terc')}">
                   <label>Cliente</label>
                   <div class="form-group form-inline">
+
+                    <button class="btn btn-primary btn-xs" data-target="#ModalLiquidarFletes"  data-toggle="modal"
+                      @click="NuevaBusqueda">
+                      <i class="la la-search"></i>
+                    </button>
+
+
+
                     <button class="btn btn-primary btn-xs" data-target="#ModalClientesBuscar"  data-toggle="modal"
                       @click="NuevaBusqueda">
                       <i class="la la-search"></i>
@@ -122,8 +130,14 @@
       <ClientesBuscar @SeleccionarTercero="SeleccionarTercero" UrlBusqueda='/clientes/buscar/'>
          <template slot='SearchTitle'>Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nombre Comercial</template>
          <template slot='ModalTitle'>Búsqueda de Clientes</template>
+
       </ClientesBuscar>
 
+        <!-- Modal para liquidar fletes-->
+      <LiquidacionFletes >
+         <template slot='SearchTitle'>Liquidación de fletes</template>
+         <template slot='ModalTitle'>Liquidación de fletes</template>
+      </LiquidacionFletes>
 
         <!-- Modal para buscar Productos Presentaciones Activos-->
       <ProductosBuscar @SeleccionarProducto="AgregarProductoPedido" UrlBusqueda='/productos/activos/'>
@@ -137,6 +151,7 @@
 
 <script>
   import CarteraCliente      from '../../components/terceros/cliente_cartera';
+  import LiquidacionFletes   from '../../components/modals/CcialLiquidaFletes';
   import Cleave              from 'vue-cleave'
   import ClientesBuscar      from '../../components/modals/TercerosBuscar';
   import Contactos           from '../../components/terceros/contactos';
@@ -169,7 +184,7 @@
             }
         },
           components: { datetime: Datetime, ProductosComprados, ClientesBuscar,ProductosBuscar,
-                        Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave
+                        Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave, LiquidacionFletes
         },
           mixins : [ FormValidation, Message ],
 

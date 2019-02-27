@@ -31,7 +31,8 @@ class PedidosController extends Controller
             $Pedido->id_terc_usu = Users::User()->id_terc;
             $Pedido->fcha_ped    = Carbon::now();
             $Pedido->id_stdo     = 0;
-            $Pedido->num_ord_cpra = $FormData->num_ord_cpra ? !empty($FormData->num_ord_cpra) : '';
+            //$Pedido->num_ord_cpra = $FormData->num_ord_cpra ? !empty($FormData->num_ord_cpra) : '';
+            $Pedido->num_ord_cpra = $FormData->input('num_ord_cpra','');
             $Pedido->save();
             $DetallePedido =  $FormData->get('detalle');
 
