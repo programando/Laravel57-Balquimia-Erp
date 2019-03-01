@@ -81,7 +81,8 @@
                        v-model ='vr_kg_rdtrans'>
                     </div>
                     <div class="col-md-4 ">
-                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled">
+                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled"
+                      v-model="vr_kg_transprensa">
                     </div>
                   </div>
 
@@ -92,7 +93,8 @@
                         :value ='vr_flete_rdtrans | NumeroEntero'>
                     </div>
                     <div class="col-md-4 ">
-                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled">
+                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled"
+                      :value ='laprensa_vr_flete | NumeroEntero' >
                     </div>
                   </div>
 
@@ -103,7 +105,8 @@
                         :value='vr_seguro_rdtrans | NumeroEntero '>
                     </div>
                     <div class="col-md-4 ">
-                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled">
+                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled"
+                       :value='laprensa_vr_seguro | NumeroEntero '>
                     </div>
                   </div>
 
@@ -114,7 +117,8 @@
                           :value="vr_totalflete_rdtrans | NumeroEntero">
                     </div>
                     <div class="col-md-4 ">
-                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled">
+                      <input type="text " class="form-control campo-form text-right mb-05" disabled="disabled"
+                      :value="laprensa_vr_flete_total | NumeroEntero ">
                     </div>
                   </div>
 
@@ -122,10 +126,12 @@
                   <div class="row">
                     <div class="col-md-4 "> Valor a cobrar :</div>
                     <div class="col-md-4 ">
-                      <input type="text " class="form-control campo-form text-right" v-model="flete_cobrar">
+                      <input type="text " class="form-control campo-form text-right"
+                      :value="flete_cobrar | NumeroEntero">
                     </div>
                     <div class="col-md-4 ">
-                      <input type="text " class="form-control campo-form text-right">
+                      <input type="text " class="form-control campo-form text-right"
+                      :value="laprensa_flete_cobrar | NumeroEntero">
                     </div>
                   </div>
                 </div>
@@ -157,7 +163,12 @@
              vr_seguro_rdtrans    :  0,
              vr_totalflete_rdtrans : 0 ,
              flete_cobrar          : 0 ,
-
+             vr_kg_transprensa     : 0,
+             vr_kg_transprensa_rexped : 0,
+             laprensa_vr_flete        : 0,
+             laprensa_vr_seguro       : 0,
+             laprensa_vr_flete_total  : 0,
+             laprensa_flete_cobrar    : 0,
         }
        },
 
@@ -165,22 +176,28 @@
 
       methods:{
           seleccionarMcipio( McipioSeleccionado ){
-              this.ped_id_dpto          = McipioSeleccionado.id_dpto;
-              this.ped_id_mcpio         = McipioSeleccionado.id_mcpio;
-              this.vr_kg_rdtrans_rexped = McipioSeleccionado.vr_kg_rdtrans_rexped;
-              this.vr_kg_rdtrans        = Math.max( McipioSeleccionado.vr_kg_rdtrans, this.vr_kg_rdtrans_rexped ) ;
+              this.ped_id_dpto              = McipioSeleccionado.id_dpto;
+              this.ped_id_mcpio             = McipioSeleccionado.id_mcpio;
+              this.vr_kg_rdtrans_rexped     = McipioSeleccionado.vr_kg_rdtrans_rexped;
+              this.vr_kg_rdtrans            = Math.max( McipioSeleccionado.vr_kg_rdtrans, this.vr_kg_rdtrans_rexped ) ;
+              this.vr_kg_transprensa_rexped = McipioSeleccionado.vr_kg_transprensa_rexped;
+              this.vr_kg_transprensa        = Math.max( McipioSeleccionado.vr_kg_transprensa, this.vr_kg_transprensa_rexped ) ;
           },
           calcularFlete() {
             let Me = this;
             let Param = { 'ped_unidades': this.ped_unidades, 'ped_peso_kg': this.ped_peso_kg, 'ped_vr_dclrdo': this.ped_vr_dclrdo,
                           'ped_id_dpto': this.ped_id_dpto, 'ped_id_mcpio': this.ped_id_mcpio, 'vr_kg_rdtrans': this.vr_kg_rdtrans,
-                           'vr_kg_rdtrans_rexped':this.vr_kg_rdtrans_rexped };
+                           'vr_kg_rdtrans_rexped':this.vr_kg_rdtrans_rexped, 'vr_kg_transprensa_rexped': this.vr_kg_transprensa_rexped,'vr_kg_transprensa': this.vr_kg_transprensa };
              axios.post('/fletes/calcular', Param )
               .then( response => {
-                  Me.vr_kg_rdtrans     = response.data.vr_kg_rdtrans;
-                  Me.vr_flete_rdtrans  = response.data.vr_flete_rdtrans;
-                  Me.vr_seguro_rdtrans = response.data.vr_seguro_rdtrans;
-                  Me.flete_cobrar      = response.data.flete_cobrar;
+                  Me.vr_kg_rdtrans         = response.data.rdtrans_vr_kg;
+                  Me.vr_flete_rdtrans      = response.data.rdtrans_vr_flete;
+                  Me.vr_seguro_rdtrans     = response.data.rdtrans_vr_seguro;
+                  Me.flete_cobrar          = response.data.rdtrans_flete_cobrar;
+
+                  Me.laprensa_vr_seguro    = response.data.laprensa_vr_seguro;
+                  Me.laprensa_vr_flete     = response.data.laprensa_vr_flete;
+                  Me.laprensa_flete_cobrar = response.data.laprensa_flete_cobrar;
 
                   this.costoTotalFlete();
               });
@@ -188,6 +205,7 @@
          costoTotalFlete(){
               this.vr_totalflete_rdtrans =  parseInt(this.vr_flete_rdtrans + this.vr_seguro_rdtrans);
               this.flete_cobrar          = parseInt( this.flete_cobrar );
+              this.laprensa_vr_flete_total = parseInt( this.laprensa_vr_flete + this.laprensa_vr_seguro );
             }
       }
 

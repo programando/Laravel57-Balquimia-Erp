@@ -2,7 +2,7 @@
   <div class="container">
     <div class="card" >
       <strong>
-      <div class="card-header" style="background-color: #dbdce0;">
+      <div class="card-header card-header-bg" >
         <h4><i class="la la-bars"></i>&nbsp;&nbsp;Registro de Pedidos</h4>
       </div>
       </strong>
@@ -12,13 +12,6 @@
                 <div class="col-md-3" :class = "{ 'invalid-data': ErrorHas('id_terc')}">
                   <label>Cliente</label>
                   <div class="form-group form-inline">
-
-                    <button class="btn btn-primary btn-xs" data-target="#ModalLiquidarFletes"  data-toggle="modal"
-                      @click="NuevaBusqueda">
-                      <i class="la la-search"></i>
-                    </button>
-
-
 
                     <button class="btn btn-primary btn-xs" data-target="#ModalClientesBuscar"  data-toggle="modal"
                       @click="NuevaBusqueda">

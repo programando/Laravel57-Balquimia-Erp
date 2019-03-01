@@ -7,10 +7,14 @@ Vue.config.devtools = true;
 
 export default new Router({
    routes : [
-        { component : require('../app/inicio/DashBoard'),       name      : 'DashBoard',       path      : '/'     },
-        { component : require('../app/maestros/Cargos'),        name      : 'cargos',          path      : '/cargos'     },
-        { component : require('../app/comercial/Pedidos'),      name      : 'pedidos',         path      : '/pedidos'     },
-        { component : require('../components/maestros/municipios'),         name      : 'ejemplo',         path      : '/ejemplo'     },
+        { component :
+              require('../app/inicio/DashBoard'),                   name: 'DashBoard',             path: '/das'     },
+        { component :
+              require('../app/maestros/Cargos'),                    name: 'cargos',                path: '/cargos'     },
+        { component :
+              require('../app/comercial/Pedidos'),                  name: 'pedidos',               path: '/pedidos'     },
+        { component :
+              require('../app/comercial/ProductosPrecios'),       name: 'prdprecios',            path: '/'     },
 
 
 
@@ -37,7 +41,7 @@ export default new Router({
 
       ],
   linkExactActiveClass: 'link-active',
-  //linkActiveClass:      'link-exact-active',
+  linkActiveClass:      'link-exact-active',
    mode:              'history',
    scrollBehavior(){
       return { x:0, y:0 };

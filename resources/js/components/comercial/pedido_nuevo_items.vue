@@ -80,7 +80,12 @@
         </tr>
         <tr>
           <td colspan="7"></td>
-          <td class="text-right">   <strong> Fletes </strong> </td>
+          <td class="text-right">
+          <button class="btn btn-success btn-xs" data-target="#ModalLiquidarFletes"  data-toggle="modal">
+              <i class="la la-calculator"></i>
+          </button>
+
+            <strong> Fletes </strong> </td>
           <td class="text-right" style="width: 25px;">   <strong>
             <input class="text-right"   v-model="PedVrFletes" style="width: 80px;" @blur="ValidarFleteGlobal()"> </strong> </td>
           </tr>

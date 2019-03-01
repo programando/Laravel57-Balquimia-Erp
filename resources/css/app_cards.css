@@ -1,0 +1,19 @@
+.card {
+    margin-bottom: 1.5rem !important;
+}
+.card-body {
+    padding: 0.5rem 1rem !important;
+}
+.card-footer {
+    padding: 0.2rem !important;
+}
+.card-header {
+    padding: 0.5rem !important;
+}
+
+.card-header > h4 {
+      color: white !important;
+}
+.card-header-bg{
+    background-color: #F78A00 !important;
+}

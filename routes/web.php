@@ -4,7 +4,7 @@
 
 
 
-Route::get('/index','FletesController@fletesRedeTrans' );
+//Route::get('/index','ProductosController@PrecioProductos' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -29,16 +29,17 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    // Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
 
     Route::get('/clientes/buscar'                     , 'TercerosController@ClientesBusqueda'                      );
-    Route::get('/clientes/vendedores'                 , 'TercerosController@ClientesVendedorPrincipal'             );
     Route::get('/clientes/compras'                    , 'TercerosController@ClientesProductosComprados'            );
-    Route::get('/terceros/notas/ventas'               , 'TercerosController@NotasVenta'                            );
-    Route::get('/terceros/notas/cartera'              , 'TercerosController@NotasCartera'                          );
-    Route::get('/terceros/contactos'                  , 'TercerosController@Contactos'                             );
-
+    Route::get('/clientes/vendedores'                 , 'TercerosController@ClientesVendedorPrincipal'             );
     Route::get('/terceros/clientes/cartera'           , 'CarteraController@ClientesFacturasPdtePago'               );
+    Route::get('/terceros/contactos'                  , 'TercerosController@Contactos'                             );
+    Route::get('/terceros/notas/cartera'              , 'TercerosController@NotasCartera'                          );
+    Route::get('/terceros/notas/ventas'               , 'TercerosController@NotasVenta'                            );
+
     Route::post('/pedidos/grabar'                      ,'PedidosController@Grabar'            );
 
     Route::get('/productos/activos'                      ,'ProductosController@ProductosPresentacionesActivos'            );
+    Route::get('/productos/precios'                      ,'ProductosController@PrecioProductos'            );
     Route::get('/municipios/listado'                      ,'MstroMunicipiosController@listadoGeneral'            );
 
     Route::post('/fletes/calcular'                      ,'FletesController@fletesRedeTrans'            );
