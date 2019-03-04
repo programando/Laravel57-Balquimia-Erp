@@ -4,7 +4,7 @@
 
 
 
-//Route::get('/index','ProductosController@PrecioProductos' );
+Route::get('/index','TercerosController@Lineas' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');

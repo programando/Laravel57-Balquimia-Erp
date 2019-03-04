@@ -75,49 +75,74 @@ class Tercero extends Eloquent
 /*******************/
 	public function Cargo()	{
 		return $this->belongsTo(\App\Models\MstroCargo::class, 'id_cargo');
-	}
+	   }
 
 	public function ClaseEmpleadoPyg()	{
 		return $this->belongsTo(\App\Models\MstroNominaPygClase::class, 'id_cls_pyg');
-	}
+	   }
 
 	public function Linea()	{
 		return $this->belongsTo(\App\Models\MstroLinea::class, 'vend_id_linea');
-	}
+	   }
   public function ZonaVentas()  {
       return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_zn_vta');
-    }
+      }
 
 	public function NivelRiesgo()	{
 		return $this->belongsTo(\App\Models\MstroNvsRiesgo::class, 'id_nv_rsgo');
-	}
+	   }
 
 	public function SubLinea()	{
 		return $this->belongsTo(\App\Models\MstroLineasSubLinea::class, 'id_sub_linea_cli');
-	}
+	   }
 
 	public function TipoDocumento()	{
 		return $this->belongsTo(\App\Models\MstroTpsDoc::class, 'id_tp_doc');
-	}
+	   }
 
 	public function Municipio()	{
 		return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_mcipio');
-	}
+	   }
 
 	public function Contactos()	{
 		return $this->hasMany(\App\Models\TercerosContacto::class, 'id_terc');
-	}
+	   }
 
 	public function Notas()	{
 		return $this->hasMany(\App\Models\TercerosNota::class, 'id_terc');
-	}
+	   }
 
 	public function Usuario()	{
 		return $this->hasOne(\App\Models\TercerosUser::class, 'id_terc');
-	}
+	   }
     public function Vendedor() {
     return $this->hasOne(\App\Models\Tercero::class, 'id_terc_vend_ppal');
-  }
+    }
+
+
+
+    public function Cartera(){
+      return $this->hasMany(\App\Models\CarteraFactura::class, 'id_terc');
+    }
+
+    public function Facturas() {
+        return $this->hasMany(\App\Models\Factura::class, 'id_terc_usu_inactvo');
+      }
+
+      public function FacturasDt()
+      {
+        return $this->hasMany(\App\Models\FacturasDt::class, 'id_terc_vend');
+      }
+
+      public function Pedidos() {
+        return $this->hasMany(\App\Models\Pedido::class, 'id_terc_usu');
+      }
+
+      public function LineasAsociadas() {
+        return $this->hasMany(\App\Models\TercerosLineasAsoc::class, 'id_terc');
+      }
+
+
 
 
 
@@ -140,6 +165,11 @@ class Tercero extends Eloquent
                     ->orWhere('nom_suc'       ,'LIKE'   , "%$Filtro%")
                     ->orWhere('nro_identif'   ,'LIKE'   , "%$Filtro%")
                     ->orWhere('nom_ccial'     ,'LIKE'   , "%$Filtro%");
+        }
+
+        public function scopePorLineas ( $query, $Lineas ){
+            return $query->whereIn('id_linea_cli', $Lineas );
+
         }
 
 

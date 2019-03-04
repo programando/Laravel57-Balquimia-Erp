@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tercero as Terceros;
+use App\Models\TercerosLineasAsoc as LineasAsoc;
+
 
 use DB;
 
@@ -18,6 +20,12 @@ class TercerosController extends Controller {
         return  $Clientes;
     }
 
+    public function Lineas(){
+        $LineasAsociadas =  LineasAsoc::LineasAsociadas(76);
+       // return LineasAsoc::all()->keyBy('id_linea');
+        $Clientes = Terceros::PorLineas( $LineasAsociadas )->get();
+        return $Clientes;
+    }
 
 
     public function ClientesVendedorPrincipal ( Request $FormData ){

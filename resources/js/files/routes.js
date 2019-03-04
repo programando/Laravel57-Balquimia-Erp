@@ -8,13 +8,13 @@ Vue.config.devtools = true;
 export default new Router({
    routes : [
         { component :
-              require('../app/inicio/DashBoard'),                   name: 'DashBoard',             path: '/das'     },
+              require('../app/inicio/DashBoard'),                   name: 'DashBoard',             path: '/'     },
         { component :
               require('../app/maestros/Cargos'),                    name: 'cargos',                path: '/cargos'     },
         { component :
               require('../app/comercial/Pedidos'),                  name: 'pedidos',               path: '/pedidos'     },
         { component :
-              require('../app/comercial/ProductosPrecios'),       name: 'prdprecios',            path: '/'     },
+              require('../app/comercial/ProductosPrecios'),       name: 'prdprecios',            path: '/productos/precios'     },
 
 
 
