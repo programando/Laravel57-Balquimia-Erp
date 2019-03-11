@@ -19,12 +19,12 @@ export default new Router({
 
 
    /*     { component : require('./views/maestros/UndsMedida') ,
-          name      : 'medidas',
+          name      : 'medidas',https://web.whatsapp.com/#
           path      : '/medidas'     },
 
         { component : require('./views/maestros/Lineas') ,
           name      : 'lineas',
-          path      : '/lineas'     },
+          path      : '/lineas'     },https://web.whatsapp.com/#
 
         { component : require('./views/maestros/LineasSubLineas') ,
           name      : 'sublineas',

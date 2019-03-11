@@ -36990,6 +36990,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_terceros_prd_comprados_ultmimos_anios__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_terceros_prd_comprados_ultmimos_anios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_terceros_prd_comprados_ultmimos_anios__);
+//
 //
 //
 //
@@ -37007,10 +37010,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+
+    components: { Compras: __WEBPACK_IMPORTED_MODULE_0__components_terceros_prd_comprados_ultmimos_anios___default.a }
 });
 
 /***/ }),
@@ -37021,30 +37024,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v("\n                    Dashboard\n                ")
-            ])
-          ])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Example Component")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _vm._v("\n                    Dashboard\n                    "),
+              _c("Compras", { attrs: { IdTercero: 4167 } })
+            ],
+            1
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -42547,7 +42549,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         BuscarCompras: function BuscarCompras() {
             var Me = this;
-            var Url = '/clientes/compras' + '?id_terc=' + this.IdTercero;
+            var Url = '/clientes/compras/resumen/productos' + '?id_terc=' + this.IdTercero;
             axios.get(Url).then(function (response) {
                 Me.ProductosComprados = response.data;
             }).catch(this.ErrorOnFail);
@@ -71321,6 +71323,358 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2f96465a", module.exports)
+  }
+}
+
+/***/ }),
+/* 422 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(423)
+/* template */
+var __vue_template__ = __webpack_require__(424)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/terceros/prd_comprados_ultmimos_anios.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9c4ff9e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-9c4ff9e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 423 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['IdTercero'],
+    mounted: function mounted() {
+        this.BuscarCompras();
+    },
+    data: function data() {
+        return {
+            ProductosComprados: [],
+            ErrorsController: {}
+        };
+    },
+
+
+    watch: {
+        IdTercero: function IdTercero() {
+            this.ProductosComprados = this.BuscarCompras() ? this.IdTercero > 0 : [];
+        }
+    },
+
+    methods: {
+        BuscarCompras: function BuscarCompras() {
+            var Me = this;
+            var reporInfo = {
+                id_terc: this.IdTercero,
+                anios: 3
+            };
+            var Url = '/clientes/compras/ultimos-anios';
+            axios.get(Url, { params: reporInfo }).then(function (response) {
+                Me.ProductosComprados = response.data;
+            }).catch(this.ErrorOnFail);
+        }
+    }
+});
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-sm-12" }, [
+      _vm.ProductosComprados.length
+        ? _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "table table-bordered table-striped table-hover table-sm"
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.ProductosComprados.id_btcra) +
+                        "\n            "
+                    ),
+                    _vm._l(_vm.ProductosComprados, function(Producto) {
+                      return _c("tr", { key: Producto.id_btcra }, [
+                        _c("td", [
+                          _vm._v(" " + _vm._s(Producto.num_ord_cpra) + " ")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm._f("FormatoFecha")(Producto.fcha_fact)
+                              ) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(" " + _vm._s(Producto.plazo_fact) + " ")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            " " +
+                              _vm._s(Producto.prfjo_rslcion) +
+                              " " +
+                              _vm._s(Producto.num_fact)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", {
+                          domProps: { textContent: _vm._s(Producto.nom_prd) }
+                        }),
+                        _vm._v(" "),
+                        _c("td", {
+                          domProps: {
+                            textContent: _vm._s(Producto.nom_present)
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(" " + _vm._s(Producto.descrip) + " ")
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-right" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(_vm._f("NumeroEntero")(Producto.cant)) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-right" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm._f("NumeroEntero")(Producto.vr_precio_lista)
+                              ) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-right" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm._f("NumeroEntero")(Producto.vr_flete)
+                              ) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-right" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm._f("NumeroEntero")(Producto.vr_precio_adic)
+                              ) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-right" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm._f("NumeroEntero")(Producto.vr_unit_real)
+                              ) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-right" }, [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm._f("NumeroEntero")(Producto.vt_tot_item)
+                              ) +
+                              " "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td")
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
+          ])
+        : _c("div", { staticClass: "col-sm-12 text-center" }, [
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _vm._m(1),
+            _c("br"),
+            _c("br")
+          ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v(" O.C.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Fecha")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Plazo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Factura")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Producto")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Present.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Descrip.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Cant.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" $ Unit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Flete ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" My.Valor")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Dscto")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" $ Item")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" $ SubTotal")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("h4", [_vm._v("No se han encontrado registros en ventas")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9c4ff9e8", module.exports)
   }
 }
 

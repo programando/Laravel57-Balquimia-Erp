@@ -61,4 +61,8 @@ class PedidosController extends Controller
 
     }
 
+    public function PedidosPorAutorizarCartera(){
+        return Pedidos::with('Usuario')->PorAutorizarCartera();
+    }
+
 }

@@ -5,35 +5,41 @@
         <table class="table table-bordered table-striped table-hover table-sm" >
           <thead>
             <tr>
+              <th> O.C.</th>
               <th> Fecha</th>
+              <th> Plazo</th>
               <th> Factura</th>
               <th> Producto</th>
               <th> Present.</th>
-              <th> Cant</th>
-              <th> $ Base</th>
-              <th> Flete</th>
-              <th> Mayor Vr.</th>
-              <th> Vr.Unit.</th>
-              <th> </th>
+              <th> Descrip.</th>
+              <th> Cant.</th>
+              <th> $ Unit</th>
+              <th> Flete </th>
+              <th> My.Valor</th>
+              <th> Dscto</th>
+              <th> $ Item</th>
+              <th> $ SubTotal</th>
+
             </tr>
           </thead>
           <tbody>
-            <tr v-for="Producto in ProductosComprados"  :key="Producto.id_fact_dt">
+            {{ ProductosComprados.id_btcra }}
+            <tr v-for="Producto in ProductosComprados"  :key="Producto.id_btcra">
+              <td> {{ Producto.num_ord_cpra}} </td>
               <td> {{ Producto.fcha_fact | FormatoFecha }} </td>
-              <td> {{ Producto.num_fact   }} </td>
+              <td> {{ Producto.plazo_fact   }} </td>
+              <td> {{ Producto.prfjo_rslcion   }} {{ Producto.num_fact   }}</td>
               <td v-text="Producto.nom_prd"> </td>
+              <td v-text="Producto.nom_present"> </td>
               <td> {{ Producto.descrip  }} </td>
               <td class="text-right"> {{ Producto.cant            | NumeroEntero  }} </td>
               <td class="text-right"> {{ Producto.vr_precio_lista | NumeroEntero  }} </td>
               <td class="text-right"> {{ Producto.vr_flete        | NumeroEntero     }} </td>
               <td class="text-right"> {{ Producto.vr_precio_adic  | NumeroEntero   }} </td>
-
               <td class="text-right"> {{ Producto.vr_unit_real    | NumeroEntero  }} </td>
+              <td class="text-right"> {{ Producto.vt_tot_item    | NumeroEntero  }} </td>
               <td>
-                <button   title="Agregar Producto"
-                type="button" class="btn btn-success btn-xs" @click="AgregarProductoPedido( Producto )">
-                <i class="la la-shopping-cart" ></i>
-              </button>
+
             </td>
           </tr>
         </tbody>
@@ -54,6 +60,9 @@
 
   export default{
     props : ['IdTercero'],
+    mounted(){
+        this.BuscarCompras()
+    },
      data() {
         return {
             ProductosComprados : [],
@@ -61,19 +70,22 @@
         }
       },
 
-      watch: {
+       watch: {
             IdTercero : function(){
               this.ProductosComprados = this.BuscarCompras() ? this.IdTercero > 0 : [];
             }
         },
+
     methods: {
-        AgregarProductoPedido( data ){
-            this.$emit('AgregarProductoPedido', data);
-        },
+
         BuscarCompras(){
-            let Me = this;
-            let Url = '/clientes/compras/resumen/productos' + '?id_terc='+this.IdTercero;
-            axios.get( Url )
+           let Me = this;
+           let Url = '/clientes/compras/ultimos-anios'  ;
+           let reporInfo = {
+                id_terc :this.IdTercero,
+                anios   : 3
+              }
+            axios.get( Url,  { params: reporInfo })
               .then( response =>{
                   Me.ProductosComprados = response.data;
               })

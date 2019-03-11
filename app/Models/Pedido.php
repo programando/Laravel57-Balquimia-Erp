@@ -35,24 +35,32 @@ class Pedido extends Eloquent
 		                        'prn_rotulo',     'vr_prd_tron',   'vr_prd_indus',      'vr_accsrios',    'vr_otros_prd'
 	];
 
-	public function mstro_pedidos_estado()
-	{
-		return $this->belongsTo(\App\Models\MstroPedidosEstado::class, 'id_stdo');
-	}
+    	public function Estado()	{
+    		return $this->belongsTo(\App\Models\MstroPedidosEstado::class, 'id_stdo');
+    	}
 
-  public function Cliente() {
-    return $this->belongsTo(\App\Models\Tercero::class, 'id_terc_cli');
-  }
+      public function Cliente() {
+        return $this->belongsTo(\App\Models\Tercero::class, 'id_terc_cli');
+      }
 
-  public function Autoriza() {
-    return $this->belongsTo(\App\Models\Tercero::class, 'id_terc_autz');
-  }
+      public function Autoriza() {
+        return $this->belongsTo(\App\Models\Tercero::class, 'id_terc_autz');
+      }
 
-	public function Usuario() {
-		return $this->belongsTo(\App\Models\Tercero::class, 'id_terc_usu');
-	}
+    	public function Usuario() {
+    		return $this->belongsTo(\App\Models\Tercero::class, 'id_terc_usu');
+    	}
 
-	public function PedidosDt() {
-		return $this->hasMany(\App\Models\PedidosDt::class, 'id_ped');
-	}
+    	public function PedidosDt() {
+    		return $this->hasMany(\App\Models\PedidosDt::class, 'id_ped');
+    	}
+
+      public function scopePorAutorizarCartera( $query ) {
+        return $query->where('facturado', 0)
+                     ->whereNull('fcha_autz_cart')
+                     ->orderBy('fcha_ped')
+                     ->get();
+      }
 }
+
+

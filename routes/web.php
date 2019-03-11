@@ -4,7 +4,7 @@
 
 
 
-Route::get('/index','TercerosController@Lineas' );
+Route::get('/index','PedidosController@PedidosPorAutorizarCartera' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -29,7 +29,9 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    // Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
 
     Route::get('/clientes/buscar'                     , 'TercerosController@ClientesBusqueda'                      );
-    Route::get('/clientes/compras'                    , 'TercerosController@ClientesProductosComprados'            );
+    Route::get('/clientes/compras/resumen/productos'  , 'TercerosController@ClientesProductosComprados'            );
+    Route::get('/clientes/compras/ultimos-anios/'     , 'TercerosController@ClientesComprasUltimosAnios'            );
+
     Route::get('/clientes/vendedores'                 , 'TercerosController@ClientesVendedorPrincipal'             );
     Route::get('/terceros/clientes/cartera'           , 'CarteraController@ClientesFacturasPdtePago'               );
     Route::get('/terceros/contactos'                  , 'TercerosController@Contactos'                             );

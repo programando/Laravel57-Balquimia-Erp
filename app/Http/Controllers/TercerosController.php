@@ -37,8 +37,18 @@ class TercerosController extends Controller {
     }
 
     public function ClientesProductosComprados ( Request $FormData ){
+        /* RESUMEN DE PRODUCTOS COMPRADOS */
         $id_terc = $FormData->id_terc;
         $Ventas  = DB::select(' call clientes_productos_comprados (?)', array($id_terc));
+        $Ventas  = collect($Ventas);
+        return $Ventas;
+    }
+
+    public function ClientesComprasUltimosAnios( Request $FormData ){
+      /*  COMPRAS REALIZADAS LOS ÚLTIMOS 3 AÑOS */
+        $id_terc = $FormData->id_terc;
+        $cant_anios = $FormData->anios;
+        $Ventas  = DB::select(' call clientes_compras_ultimos_anios (?, ? )', array( $id_terc, $cant_anios));
         $Ventas  = collect($Ventas);
         return $Ventas;
     }
