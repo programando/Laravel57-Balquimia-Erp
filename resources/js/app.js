@@ -31,7 +31,13 @@ Vue.component('edit-record'                     ,require( './components/modals/E
 Vue.component('new-record'                      ,require( './components/modals/NewRecord' ));
 
 Vue.filter('FormatoFecha', (value) => {  return Moment(value).format('DD-MMM-YYYY');     });
+Vue.filter('FechaCorta', (value) => {  return Moment(value).format('DD-MM-YY');     });
 Vue.filter('NumeroEntero', (value) => {  return Numeral(value).format('0,0');             });
+Vue.filter('Capitalize', (value) => {
+   if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+   });
 
 Vue.use(VueSweetalert2);
 

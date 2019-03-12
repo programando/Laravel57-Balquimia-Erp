@@ -62,7 +62,9 @@ class PedidosController extends Controller
     }
 
     public function PedidosPorAutorizarCartera(){
-        return Pedidos::with('Usuario')->PorAutorizarCartera();
+        //return Pedidos::with('Usuario')->PorAutorizarCartera();
+        $Pedidos   = DB::select(' call cartera_pedidos_por_autorizar ()');
+        return $Pedidos;
     }
 
 }

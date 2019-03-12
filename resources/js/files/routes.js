@@ -14,6 +14,8 @@ export default new Router({
         { component :
               require('../app/comercial/Pedidos'),                  name: 'pedidos',               path: '/pedidos'     },
         { component :
+              require('../app/comercial/PedidosCarteraAutoriz'),   name: 'ped_aut_cart',               path: '/pedidos/autorizar'     },
+        { component :
               require('../app/comercial/ProductosPrecios'),       name: 'prdprecios',            path: '/productos/precios'     },
 
 

@@ -55,12 +55,14 @@ class Pedido extends Eloquent
     		return $this->hasMany(\App\Models\PedidosDt::class, 'id_ped');
     	}
 
-      public function scopePorAutorizarCartera( $query ) {
+     /* public function scopePorAutorizarCartera ( $query ) {
         return $query->where('facturado', 0)
                      ->whereNull('fcha_autz_cart')
                      ->orderBy('fcha_ped')
                      ->get();
       }
+      */
+
 }
 
 

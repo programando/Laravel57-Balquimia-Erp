@@ -13,8 +13,9 @@
         <li class=" nav-item nav-item-app">
          <i class="la la-group"></i><span class="menu-title" data-i18n="nav.dash.main">Comercial</span>
           <ul class="menu-content">
-            <li>  <router-link :to="{name:'pedidos'}" class="menu-item-op">Registro de Pedidos   </router-link>     </li>
-            <li>  <router-link :to="{name:'prdprecios'}" class="menu-item-op">Listado de Precios  </router-link>     </li>
+            <li>  <router-link :to="{name:'pedidos'}"       class="menu-item-op">Registro de Pedidos    </router-link>     </li>
+            <li>  <router-link :to="{name:'ped_aut_cart'}"  class="menu-item-op">Autorización Cartera   </router-link>     </li>
+            <li>  <router-link :to="{name:'prdprecios'}"    class="menu-item-op">Listado de Precios     </router-link>     </li>
           </ul>
         </li>
 

@@ -123,7 +123,6 @@
       <ClientesBuscar @SeleccionarTercero="SeleccionarTercero" UrlBusqueda='/clientes/buscar/'>
          <template slot='SearchTitle'>Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nombre Comercial</template>
          <template slot='ModalTitle'>Búsqueda de Clientes</template>
-
       </ClientesBuscar>
 
         <!-- Modal para liquidar fletes-->
