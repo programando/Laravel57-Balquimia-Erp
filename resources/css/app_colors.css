@@ -1,0 +1,15 @@
+.negro, .bg-negro{
+   color: #23282C;
+}
+.rojo{
+  color: red;
+}
+
+.orange, .bg-orange {
+  color : #FF9800;
+}
+
+.bg-rojo-alerta{
+  background-color: #f7253d;
+  color: white !important;
+}

@@ -1,0 +1,22 @@
+/*-----------------------------
+TABLAS
+-----------------------------
+*/
+th {
+  text-align: center;
+  padding : 0.5px 0.5px !important;
+  vertical-align: middle !important;
+  color: #23282C;
+}
+tr {
+    vertical-align: middle !important;
+    height: 30px !important;
+}
+
+ td {
+    padding: 0.2rem 0.4rem !important;
+    vertical-align: middle !important;
+    font-size: 11px;
+    color: #2C303B !important;
+}
+/*  ----------------------------- */

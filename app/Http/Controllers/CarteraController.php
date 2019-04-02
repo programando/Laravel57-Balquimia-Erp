@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 class CarteraController extends Controller
 {
       public function ClientesFacturasPdtePago ( Request $FormData){
-           //$Id_Terc = $FormData->id_terc;
-           $Id_Terc               = 4167;
+           $Id_Terc = $FormData->id_terc;
+           //$Id_Terc               = 4167;
            $Facturas              = DB::select(' call cartera_clientes_facturas_x_pago ( ? ) ', array( $Id_Terc ));
            $Acumulado             = 0;
            $TieneFacturasVencidas = 0;

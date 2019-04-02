@@ -23,7 +23,7 @@
             <th> Flete</th>
             <th> Mayor Vr.</th>
             <th> Vr.Unit.</th>
-            <th> Vr.Unit.</th>
+            <th> Vr.Total</th>
           </tr>
         </thead>
         <tbody>
@@ -65,6 +65,7 @@
 
             </tr>
           </tbody>
+
           <tr>
             <td colspan="7"></td>
             <td class="text-right">   <strong> Sub-Total </strong> </td>

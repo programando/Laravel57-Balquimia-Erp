@@ -31,6 +31,9 @@ class PedidosController extends Controller
             $Pedido->id_terc_usu = Users::User()->id_terc;
             $Pedido->fcha_ped    = Carbon::now();
             $Pedido->id_stdo     = 0;
+            $Pedido->web         = 1;
+            $Pedido->observ_ped  =  $FormData->observ_ped;
+
             //$Pedido->num_ord_cpra = $FormData->num_ord_cpra ? !empty($FormData->num_ord_cpra) : '';
             $Pedido->num_ord_cpra = $FormData->input('num_ord_cpra','');
             $Pedido->save();
@@ -65,6 +68,26 @@ class PedidosController extends Controller
         //return Pedidos::with('Usuario')->PorAutorizarCartera();
         $Pedidos   = DB::select(' call cartera_pedidos_por_autorizar ()');
         return $Pedidos;
+    }
+    /*  ABRIL 01 2019
+       CONSULTA DETALLES DE UN PEDIDO, LOS PRODUCTOS QUE CONTIENE
+    */
+    public function PedidosConsultaDetalle( Request $FormData){
+        $id_ped        = $FormData->id_ped;
+        $DetallePedido = DB::select(' call pedidos_consulta_detalle (?)', array( $id_ped));
+        return $DetallePedido;
+    }
+
+    /*  ABRIL 01 2019
+      AUTORIZACIÓN DE PEDIDOS.
+    */
+    public function  Autorizado( Request $FormData ){
+      $id_ped                 = $FormData->id_ped;
+      $Pedido                 = Pedidos::findOrFail( $id_ped );
+      $Pedido->id_terc_autz   = Users::User()->id_terc;
+      $Pedido->fcha_autz_cart = Carbon::now();
+      $Pedido->save();
+      return "Autorizado";
     }
 
 }

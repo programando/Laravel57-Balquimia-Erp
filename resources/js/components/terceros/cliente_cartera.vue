@@ -4,7 +4,7 @@
         <strong>
           <div v-if="TotalVencido" class="text-right negro p-1" >TOTAL CARTERA VENCIDA  : {{ TotalVencido | NumeroEntero }}</div>
         </strong>
-        <table class="table table-responsive-sm table-bordered table-striped table-sm table-hover">
+        <table class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
           <thead>
               <tr>
               <th>Fecha</th>
@@ -15,14 +15,14 @@
               <th>Acum.Vencido</th>
               </tr>
            </thead>
-            <tbody>
+            <tbody >
             <tr v-for="Factura in FacturasCartera" :key="Factura.id_reg">
-              <td :class="{'alerta' : AplicaAlerta(Factura)  }">{{ Factura.fcha_fact | FormatoFecha }}</td>
-              <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }" >{{ Factura.num_fact  }}</td>
-              <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }">{{ Factura.vr_tot_fact | NumeroEntero }}</td>
-              <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }">{{ Factura.plazo_fact  }}</td>
-              <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }">{{ Factura.dias_a_hoy  }}</td>
-              <td class="text-right" :class="{'alerta' : AplicaAlerta(Factura)  }"> {{ Factura.vr_acum_vencido | NumeroEntero }}</td>
+              <td :class="{'bg-rojo-alerta' : AplicaAlerta(Factura)  }">{{ Factura.fcha_fact | FormatoFecha }}</td>
+              <td class="text-right" :class="{'bg-rojo-alerta' : AplicaAlerta(Factura)  }" >{{ Factura.num_fact  }}</td>
+              <td class="text-right" :class="{'bg-rojo-alerta' : AplicaAlerta(Factura)  }">{{ Factura.vr_tot_fact | NumeroEntero }}</td>
+              <td class="text-right" :class="{'bg-rojo-alerta' : AplicaAlerta(Factura)  }">{{ Factura.plazo_fact  }}</td>
+              <td class="text-right" :class="{'bg-rojo-alerta' : AplicaAlerta(Factura)  }">{{ Factura.dias_a_hoy  }}</td>
+              <td class="text-right" :class="{'bg-rojo-alerta' : AplicaAlerta(Factura)  }"> {{ Factura.vr_acum_vencido | NumeroEntero }}</td>
             </tr>
             </tbody>
         </table>

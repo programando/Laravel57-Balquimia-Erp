@@ -9,6 +9,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+use App\Helpers\Strings;
 
 class Pedido extends Eloquent
 {
@@ -54,6 +55,28 @@ class Pedido extends Eloquent
     	public function PedidosDt() {
     		return $this->hasMany(\App\Models\PedidosDt::class, 'id_ped');
     	}
+
+  /*  MUTATORS
+      modifica el contenido del campo antes de almacenar en el campo
+  */
+    public function setNumOrdCprasAttribute ( $value ){
+        $this->attributes['num_ord_cpra'] = Strings::UpperTrim ( $value,20); ;
+    }
+
+    public function setObservRemisAttribute ( $value ){
+        $this->attributes['observ_remis'] = Strings::UpperTrim ( $value,200);
+    }
+    public function setObservPedAttribute ( $value ){
+        $this->attributes['observ_ped'] = Strings::UpperTrim ( $value,200);
+    }
+
+    public function setObservCartAttribute ( $value ){
+        $this->attributes['observ_cart'] = Strings::UpperTrim ( $value,200);
+    }
+
+/** ACCESORES
+    Retornan el contenido del campo renombrando la variable de salida
+**/
 
      /* public function scopePorAutorizarCartera ( $query ) {
         return $query->where('facturado', 0)

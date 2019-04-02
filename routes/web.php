@@ -4,7 +4,7 @@
 
 
 
-Route::get('/index','PedidosController@PedidosPorAutorizarCartera' );
+//Route::get('/index','PedidosController@PedidosPorAutorizarCartera' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -34,6 +34,8 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
     Route::get('/terceros/notas/ventas'                 , 'TercerosController@NotasVenta'                            );
     Route::post('/fletes/calcular'                        ,'FletesController@fletesRedeTrans'            );
     Route::post('/pedidos/grabar'                       ,'PedidosController@Grabar'            );
+    Route::post('/pedidos/detalle'                       ,'PedidosController@PedidosConsultaDetalle'            );
+    Route::post('/pedidos/autorizar'                       ,'PedidosController@Autorizado'            );
 
     Route::resource('/cargos'        , 'MstroCargosController'             ,['except'=>'edit','create', 'show'] );
 

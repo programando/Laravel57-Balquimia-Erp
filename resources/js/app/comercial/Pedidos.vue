@@ -143,11 +143,11 @@
 
 <script>
   import CarteraCliente      from '../../components/terceros/cliente_cartera';
-  import LiquidacionFletes   from '../../components/modals/CcialLiquidaFletes';
   import Cleave              from 'vue-cleave'
   import ClientesBuscar      from '../../components/modals/TercerosBuscar';
   import Contactos           from '../../components/terceros/contactos';
   import FormValidation      from '../../mixins/FormValidation.js';
+  import LiquidacionFletes   from '../../components/modals/CcialLiquidaFletes';
   import Message             from '../../mixins/ToastrMessages.js';
   import NotasCartera        from '../../components/terceros/notas_cartera';
   import NotasVenta          from '../../components/terceros/notas_ventas';
@@ -178,7 +178,7 @@
           components: { datetime: Datetime, ProductosComprados, ClientesBuscar,ProductosBuscar,
                         Contactos, NotasCartera, NotasVenta, CarteraCliente,PedidoNuevo, Cleave, LiquidacionFletes
         },
-          mixins : [ FormValidation, Message ],
+        mixins : [ FormValidation, Message ],
 
        computed: {
 

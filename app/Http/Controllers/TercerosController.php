@@ -46,7 +46,7 @@ class TercerosController extends Controller {
 
     public function ClientesComprasUltimosAnios( Request $FormData ){
       /*  COMPRAS REALIZADAS LOS ÚLTIMOS 3 AÑOS */
-        $id_terc = $FormData->id_terc;
+        $id_terc    = $FormData->id_terc;
         $cant_anios = $FormData->anios;
         $Ventas  = DB::select(' call clientes_compras_ultimos_anios (?, ? )', array( $id_terc, $cant_anios));
         $Ventas  = collect($Ventas);

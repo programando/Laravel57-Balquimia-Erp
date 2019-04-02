@@ -15,7 +15,7 @@
                       :rows         ="rows"
                       :fixed-header ="true"
                       max-height    ="800px"
-                      styleClass    ="vgt-table bordered vgt-table condensed vgt-table striped"
+                      styleClass    ="vgt-table bordered condensed striped vgt-left-align"
                       :search-options="{
                             enabled: true,
                             placeholder: 'Buscar producto',

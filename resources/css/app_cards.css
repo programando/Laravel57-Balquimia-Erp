@@ -13,6 +13,7 @@
 
 .card-header > h4 {
       color: white !important;
+      font-weight: bold;
 }
 .card-header-bg{
     background-color: #F78A00 !important;

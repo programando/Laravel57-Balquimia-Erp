@@ -9,7 +9,9 @@ const mix = require('laravel-mix');
 
    mix.styles ([
         'resources/css/app.css',
+        'resources/css/app_colors.css',
         'resources/css/app_cards.css',
+        'resources/css/app_tables.css',
         'resources/vendors/css/toastr.min.css',
        ], 'public/css/Vue-App.css') ;     // Archivo de salida CSS
 

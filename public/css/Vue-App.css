@@ -1,7 +1,12 @@
 /*.active {
     background-color: #20A8D8 !important;
 }
+
+#263445
 */
+html body .content .content-wrapper {
+    padding: 1.3rem !important;
+}
 
 .btn-xs, .btn-group-xs > .btn {
     padding: 0.4rem ;
@@ -14,7 +19,7 @@
 
 label {
     display: inline-block;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.01rem;
 }
 
 .form-control {
@@ -32,39 +37,6 @@ label {
 COLORES
 -----------------------------
 */
-.negro{
-   color: #23282C;
-}
-.rojo{
-  color: red;
-}
-
-.alerta {
-   background-color: #FF4961;
-   color: white;
-}
-/*
------------------------------
-TABLAS
------------------------------
-*/
-th {
-  text-align: center;
-  padding : 0.5px 0.5px !important;
-  vertical-align: middle !important;
-  color: #23282C;
-}
-tr {
-    vertical-align: middle !important;
-    height: 30px !important;
-}
-
- td {
-    padding: 0.2rem 0.4rem !important;
-    vertical-align: middle !important;
-    font-size: 11.5px;
-}
-/*  ----------------------------- */
 
 
 .mb-05, .my-05 {
@@ -116,13 +88,13 @@ ol li, ul li, dl li {
 
  .link-active  {
    font-weight: bold;
-   color: #fcf4ab !important;
+   color: #FFFFFF !important;
 }
 
 .my-vdatetime{
      border: 1px solid #666EE8 !important;
-         border-radius: 0.25rem;
-         padding-left: 10px;
+     border-radius: 0.25rem;
+    padding-left: 10px;
 }
 
 
@@ -141,6 +113,22 @@ ol li, ul li, dl li {
 
 
 
+.negro, .bg-negro{
+   color: #23282C;
+}
+.rojo{
+  color: red;
+}
+
+.orange, .bg-orange {
+  color : #FF9800;
+}
+
+.bg-rojo-alerta{
+  background-color: #f7253d;
+  color: white !important;
+}
+
 .card {
     margin-bottom: 1.5rem !important;
 }
@@ -156,10 +144,34 @@ ol li, ul li, dl li {
 
 .card-header > h4 {
       color: white !important;
+      font-weight: bold;
 }
 .card-header-bg{
     background-color: #F78A00 !important;
 }
+
+/*-----------------------------
+TABLAS
+-----------------------------
+*/
+th {
+  text-align: center;
+  padding : 0.5px 0.5px !important;
+  vertical-align: middle !important;
+  color: #23282C;
+}
+tr {
+    vertical-align: middle !important;
+    height: 30px !important;
+}
+
+ td {
+    padding: 0.2rem 0.4rem !important;
+    vertical-align: middle !important;
+    font-size: 11px;
+    color: #2C303B !important;
+}
+/*  ----------------------------- */
 
 /*
  * Note that this is toastr v2.1.3, the "latest" version in url has no more maintenance,
