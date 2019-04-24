@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import FormValidation from '../../mixins/FormValidation';
 
   export default{
       props :['IdTercero'],
@@ -37,22 +36,22 @@ import FormValidation from '../../mixins/FormValidation';
                ErrorsController  : {},
           }
       },
-      mixins: [FormValidation],
+
       watch: {
           IdTercero : function(){
-             this.NotasCartera = this.BuscarNotasCartera() ? this.IdTercero>0 : [];
+             this.NotasCartera = this.BuscarNotasCartera ? this.IdTercero>0 : [];
             },
+
       methods :{
-          BuscarNotasCartera(){
+          BuscarNotasCartera (){
              let Me = this;
             let Url = '/terceros/notas/cartera' + '?id_terc='+this.IdTercero;
             axios.get( Url )
               .then( response =>{
                   Me.NotasCarteras = response.data;
               })
-              .catch( this.ErrorOnFail );
           },
-      }
+        }
       }
 
   };

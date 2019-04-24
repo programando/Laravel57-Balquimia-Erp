@@ -36,6 +36,7 @@ class PedidosController extends Controller
 
             //$Pedido->num_ord_cpra = $FormData->num_ord_cpra ? !empty($FormData->num_ord_cpra) : '';
             $Pedido->num_ord_cpra = $FormData->input('num_ord_cpra','');
+            $Pedido->num_ped      = 1;
             $Pedido->save();
             $DetallePedido =  $FormData->get('detalle');
 

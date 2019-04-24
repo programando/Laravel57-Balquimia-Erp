@@ -7,10 +7,10 @@
 
 namespace App\Models;
 
+use App\Helpers\Strings;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-use App\Helpers\Strings;
-
+use DB;
 class Pedido extends Eloquent
 {
   protected $primaryKey = 'id_ped';
@@ -59,7 +59,7 @@ class Pedido extends Eloquent
   /*  MUTATORS
       modifica el contenido del campo antes de almacenar en el campo
   */
-    public function setNumOrdCprasAttribute ( $value ){
+    public function setNumOrdCpraAttribute ( $value ){
         $this->attributes['num_ord_cpra'] = Strings::UpperTrim ( $value,20); ;
     }
 
@@ -72,6 +72,18 @@ class Pedido extends Eloquent
 
     public function setObservCartAttribute ( $value ){
         $this->attributes['observ_cart'] = Strings::UpperTrim ( $value,200);
+    }
+
+    public function setNumPedAttribute( $value ){
+        $Consec = DB::select("call pedidos_generar_consecutivo()");
+        $NumPed = $Consec[0]->num_ped;
+        if ( $NumPed  == 1 ) {
+           // EL 1 ANTEPUESTO CORRESPONDE A PEDIDO DE LA WEB, EL 2 EN EL NUMERO DE PEDIDO CORRESPONDE A PEDIDO COMPUTRON
+            $Mes    = date('m');
+            $Anio   = date('y');
+            $NumPed = '1'.$Mes.$Anio. $NumPed ;
+          }
+        $this->attributes['num_ped'] = $NumPed  ;
     }
 
 /** ACCESORES
