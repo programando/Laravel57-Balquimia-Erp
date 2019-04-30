@@ -13,8 +13,11 @@
         </div>
         <div class="modal-body"  >
           <form class="form-horizontal form-simple" novalidate method="POST" enctype="multipart/form-data">
-            <PedidoDetalle :DetallePedido="DetallePedido">
-                 <template slot="DatosCliente"><h3>{{ DatosClientePedido }}</h3></template>
+            <PedidoDetalle
+                :DetallePedido="DetallePedido" >
+                <template slot="DatosCliente">
+                  <h3>{{ DatosClientePedido }}</h3>
+                </template>
             </PedidoDetalle>
               <button type="button" class="btn grey btn-secondary btn-sm" data-dismiss="modal"  >Cancelar</button>
               <button type="button" class="btn btn-success btn-sm" @click="autorizarPedido()"  >Aprobar Pedido</button>
@@ -38,6 +41,7 @@
        </ul> <!-- / ULS-->
 
        <div class="tab-content px-1 pt-1">
+
               <div role="tabpanel" class="tab-pane active"  id="HistoricoVentas"  >
                 <HistorialVentas :IdTercero="IdTercero"></HistorialVentas>
               </div>
@@ -81,10 +85,13 @@ export default {
           return {
             DetallePedido : [],
             DatosCliente : '',
+            DatosDetalle : [],
+            VariableEjmplo : 'Esta es una variable de ejemplo desde el componente',
           }
        },
 
        components : { PedidoDetalle, HistorialVentas, CarteraCliente, NotasVenta, NotasCartera },
+       mixins : [  Message ],
 
        watch :{
             IdPedido : function(){
@@ -92,7 +99,7 @@ export default {
             }
        },
 
-       mixins : [  Message ],
+
 
        methods:{
 
@@ -100,7 +107,6 @@ export default {
             axios.post('/pedidos/detalle', {'id_ped': this.IdPedido })
             .then( response => {
                 this.DetallePedido = response.data;
-
             });
           },
 
@@ -110,7 +116,7 @@ export default {
               this.Success('Pedidos', 'Autorización finalizada con éxito !!!');
           },
 
-        },// Methods
-    };
+        }// Methods
+    }
 
-
+</script>

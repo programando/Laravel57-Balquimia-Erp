@@ -12,6 +12,7 @@
           <div class="col-sm-12 text-center" >
             <h4>Seleccione uno de los pedidos, presionando click en el número, para ver sus productos.</h4>
 
+
           </div>
           <div class="table-responsive"  style="max-height: 10%">
             <table class="table table-bordered table-striped table-hover table-sm"  >
@@ -65,8 +66,9 @@
        :IdPedido="id_ped"
        :DatosClientePedido="DatosCliente"
        :IdTercero="id_terc"
-        @autorizarPedido="autorizarPedido"
-       ></AprobarPedido>
+        @autorizarPedido="autorizarPedido"    >
+  </AprobarPedido :DetallePedido="DetallePedido">
+
 </div>
 
 
@@ -75,6 +77,7 @@
 
 <script>
 import AprobarPedido from '../../components/modals/PedidoAprobarCartera.vue';
+
 
   export default {
     mounted(){
@@ -85,8 +88,8 @@ import AprobarPedido from '../../components/modals/PedidoAprobarCartera.vue';
             PedidosPorAutorizar : [],
             id_terc : 0,
             id_ped : 0,
-            DetallePedido : [],
             DatosCliente :'',
+
         }
     },
     components : {  AprobarPedido },
