@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Redirect;
 use Session;
 use \App\Models\Frase;
@@ -93,7 +94,8 @@ class LoginController extends Controller
                 ->withInput( $FormData->only('email','remember_me'))
                 ->withErrors( ['email' =>  trans('_app.email_error') ] );
          }
-         $token                 = str_random(100);
+         //$token                 = str_random(100);
+         $token                 = Str::random(100);
          //Iniciar Evento envio correo
          LoginSendMailResetPassword::dispatch( $email, $token );
           //Graba el Token en la base de datos
