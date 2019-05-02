@@ -15,14 +15,10 @@ class MstroMunicipio extends Eloquent
   public $timestamps    = false;
 
   protected $casts = [
-    'id_dpto'                  => 'int',
-    'zn_vta'                   => 'bool',
-    'mnv'                      => 'bool',
-    'inactivo'                 => 'bool',
-    'vr_kg_rdtrans'            => 'float',
-    'vr_kg_rdtrans_rexped'     => 'float',
-    'vr_kg_transprensa'        => 'float',
-    'vr_kg_transprensa_rexped' => 'float'
+    'id_dpto'                  => 'int',      'zn_vta'                   => 'bool',
+    'mnv'                      => 'bool',      'inactivo'                 => 'bool',
+    'vr_kg_rdtrans'            => 'float',     'vr_kg_rdtrans_rexped'     => 'float',
+    'vr_kg_transprensa'        => 'float',     'vr_kg_transprensa_rexped' => 'float'
   ];
 
   protected $fillable = [
